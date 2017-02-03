@@ -1,0 +1,8 @@
+welcome:
+  message: Hellow World
+spring:
+  datasource:
+    username: root
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tsd_srrs?characterEncoding=UTF-8&useSSL=false
