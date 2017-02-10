@@ -60,7 +60,21 @@
             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
         <div id="table">
-            <h1>Sample table</h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>Resource Name</th>
+                    <th:block th:each="yr : ${yearsData}">
+                        <th th:text="${yr}"></th>
+                    </th:block>
+                </tr>
+                <th:block th:each="dt : ${data}">
+                    <tr>
+                        <td th:text="${dt.id}">id</td>
+                        <td th:text="${user.name}">id</td>
+                        <td th:text="${user.email}">id</td>
+                    </tr>
+                </th:block>
+            </table>
         </div>
     </div>
 

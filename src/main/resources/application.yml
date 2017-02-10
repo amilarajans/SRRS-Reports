@@ -2,7 +2,8 @@ welcome:
   message: Hellow World
 spring:
   datasource:
-    username: root
-    password: admin
+    username: b61ec3ba77d21c
+    password: 73121e64
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/tsd_srrs?characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/heroku_c21939b1ce2dfd5?reconnect=true
+#    mysql://b61ec3ba77d21c:73121e64@us-cdbr-iron-east-04.cleardb.net/heroku_c21939b1ce2dfd5?reconnect=true
