@@ -36,6 +36,7 @@ public class PastReservationController {
 
     public PastReservationController(DSLContext dsl, DateUtil dateUtil) {
         this.dsl = dsl;
+        this.dateUtil = dateUtil;
     }
 
     @ModelAttribute("allResource")
@@ -99,18 +100,18 @@ public class PastReservationController {
         //|0 |1          |2      |3   |4      |5         |6            |7            |8    |9  |10        |11        |12|13         |14  |15      |16         |17        |18        |
         fetch.stream().forEach(i -> {
             Map<String, Object> map = new HashMap<>();
-            List<Integer> data=new ArrayList<>();
+            List<Integer> data = new ArrayList<>();
             map.put("name", i.getValue(RESOURCES.NAME));
 
 
-            LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0,0,0,0);
-            LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0,0,0,0);
+            LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
+            LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
             long l = Duration.between(startDateTime, endDateTime).toDays();
             daysList.stream().forEach(day -> {
                 LocalDateTime dateTime = day.toLocalDate().atTime(0, 0, 0, 0);
-                if (startDateTime.equals(dateTime) || endDateTime.equals(dateTime) || (startDateTime.isBefore(dateTime) && endDateTime.isAfter(dateTime))){
+                if (startDateTime.equals(dateTime) || endDateTime.equals(dateTime) || (startDateTime.isBefore(dateTime) && endDateTime.isAfter(dateTime))) {
                     data.add(((Integer) i.getValue(0)));
-                }else{
+                } else {
                     data.add(0);
                 }
             });
