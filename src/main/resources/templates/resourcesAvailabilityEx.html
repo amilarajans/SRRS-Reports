@@ -24,14 +24,6 @@
                 </div>
 
             </div>
-            <!--<div class="form-group">-->
-                <!--<label for="idx2" class="col-sm-3 control-label">User</label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<select disabled="true" id="idx2" class="form-control"  th:field="*{user}">-->
-                        <!--<option th:each="type : ${allUsers}" th:value="${type.key}" th:text="${type.value}"></option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
             <div class="form-group">
                 <label for="idx4" class="col-sm-3 control-label">Reservation Start Date</label>
                 <div class="col-sm-4">
@@ -74,19 +66,12 @@
         <div id="table">
             <table class="table table-striped">
                 <tr>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th>Date</th>
                     <th>Resource Name</th>
-                    <!--<th>User Name</th>-->
-                    <th>Location</th>
                 </tr>
-                <th:block th:each="rc : ${records}">
+                <th:block th:each="yr : ${days}">
                     <tr>
-                        <td th:text="${rc.localDateTime1}"></td>
-                        <td th:text="${rc.localDateTime2}"></td>
-                        <td th:text="${rc.value1}"></td>
-                        <!--<td th:text="${rc.getValue(15)}"></td>-->
-                        <td th:text="${rc.value2}"></td>
+                        <td th:text="${yr}"></td>
                     </tr>
                 </th:block>
             </table>

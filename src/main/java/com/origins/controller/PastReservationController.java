@@ -1,8 +1,8 @@
 package com.origins.controller;
 
+import com.origins.dao.GenericDAO;
 import com.origins.dao.KeyValue;
 import com.origins.dao.SearchData;
-import com.origins.domain.tables.Users;
 import com.origins.util.DateUtil;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.Timestamp;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.origins.domain.tables.Reservations.RESERVATIONS;
@@ -48,14 +50,14 @@ public class PastReservationController {
         return keyValues;
     }
 
-    @ModelAttribute("allUsers")
-    public List<KeyValue<Integer>> allUsers() {
-        List<KeyValue<Integer>> keyValues = new ArrayList<>();
-        keyValues.add(new KeyValue(-1, "All"));
-        dsl.selectFrom(Users.USERS).fetch()
-                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
-        return keyValues;
-    }
+//    @ModelAttribute("allUsers")
+//    public List<KeyValue<Integer>> allUsers() {
+//        List<KeyValue<Integer>> keyValues = new ArrayList<>();
+//        keyValues.add(new KeyValue(-1, "All"));
+//        dsl.selectFrom(Users.USERS).fetch()
+//                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
+//        return keyValues;
+//    }
 
     @RequestMapping("/passedReservations")
     public String init(final ModelMap modelMap) {
@@ -65,6 +67,8 @@ public class PastReservationController {
 
     @RequestMapping(value = "/passedReservations", params = {"search"})
     public String searchData(final ModelMap modelMap, final SearchData searchData) {
+
+        List<GenericDAO> dataList = new ArrayList<>();
 
         Condition condition = trueCondition();
 
@@ -103,10 +107,11 @@ public class PastReservationController {
             List<Integer> data = new ArrayList<>();
             map.put("name", i.getValue(RESOURCES.NAME));
 
-
             LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
             LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
-            long l = Duration.between(startDateTime, endDateTime).toDays();
+
+            dataList.add(new GenericDAO(i.getValue(RESOURCES.NAME).toString(), i.getValue(RESOURCES.LOCATION).toLowerCase(), startDateTime, endDateTime));
+
             daysList.stream().forEach(day -> {
                 LocalDateTime dateTime = day.toLocalDate().atTime(0, 0, 0, 0);
                 if (startDateTime.equals(dateTime) || endDateTime.equals(dateTime) || (startDateTime.isBefore(dateTime) && endDateTime.isAfter(dateTime))) {
@@ -118,6 +123,7 @@ public class PastReservationController {
             map.put("data", data);
             mapList.add(map);
         });
+        modelMap.addAttribute("records", dataList);
         modelMap.addAttribute("days", days);
         modelMap.addAttribute("data", mapList);
         return "passedReservations";

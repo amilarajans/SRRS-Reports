@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Amila-Kumara on 02/02/2017.
  */
 @Controller
-public class WelcomeController {
+public class ResourcesAvailabilityInController {
 
-    @RequestMapping("/")
+    @RequestMapping("/resourcesAvailabilityIn")
     @CrossOrigin(origins = "*")
     public String welcome(final ModelMap model) {
-        return "welcome";
+        return "resourcesAvailabilityIn";
     }
 
 }
