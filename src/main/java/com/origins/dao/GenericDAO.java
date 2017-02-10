@@ -16,12 +16,17 @@ public class GenericDAO {
     private LocalDate localDate2;
     private LocalDateTime localDateTime1;
     private LocalDateTime localDateTime2;
+    private Long long1;
+    private Long long2;
+    private Integer integer1;
+    private Integer integer2;
 
-    public GenericDAO(String value1, String value2, LocalDateTime localDateTime1, LocalDateTime localDateTime2) {
+    public GenericDAO(String value1, String value2, LocalDateTime localDateTime1, LocalDateTime localDateTime2, Integer integer1) {
         this.value1 = value1;
         this.value2 = value2;
         this.localDateTime1 = localDateTime1;
         this.localDateTime2 = localDateTime2;
+        this.integer1 = integer1;
     }
 
     public String getValue1() {
@@ -86,5 +91,37 @@ public class GenericDAO {
 
     public void setLocalDateTime2(LocalDateTime localDateTime2) {
         this.localDateTime2 = localDateTime2;
+    }
+
+    public Long getLong1() {
+        return long1;
+    }
+
+    public void setLong1(Long long1) {
+        this.long1 = long1;
+    }
+
+    public Long getLong2() {
+        return long2;
+    }
+
+    public void setLong2(Long long2) {
+        this.long2 = long2;
+    }
+
+    public Integer getInteger1() {
+        return integer1;
+    }
+
+    public void setInteger1(Integer integer1) {
+        this.integer1 = integer1;
+    }
+
+    public Integer getInteger2() {
+        return integer2;
+    }
+
+    public void setInteger2(Integer integer2) {
+        this.integer2 = integer2;
     }
 }
