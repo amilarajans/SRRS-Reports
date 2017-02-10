@@ -18,7 +18,9 @@
             <div class="form-group">
                 <label for="idx1" class="col-sm-3 control-label">Resource</label>
                 <div class="col-sm-4">
-                    <input type="text" id="idx1" class="form-control" th:field="*{resource}"/>
+                    <select id="idx1" class="form-control"  th:field="*{resource}">
+                        <option th:each="type : ${allResource}" th:value="${type.key}" th:text="${type.value}"></option>
+                    </select>
                 </div>
 
             </div>
@@ -29,10 +31,18 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="idx3" class="col-sm-3 control-label">Reservation Date</label>
+                <label for="idx4" class="col-sm-3 control-label">Reservation Start Date</label>
                 <div class="col-sm-4">
-                    <input disabled="true" type="text" id="idx3" class="form-control" th:field="*{date}"/>
+                    <input type="text" id="idx4" class="form-control" th:field="*{startDate}"/>
                 </div>
+                (<span th:text="#{date.format}">YYYY/MM/DD</span>)
+            </div>
+            <div class="form-group">
+                <label for="idx5" class="col-sm-3 control-label">Reservation End Date</label>
+                <div class="col-sm-4">
+                    <input type="text" id="idx5" class="form-control" th:field="*{endDate}"/>
+                </div>
+                (<span th:text="#{date.format}">YYYY/MM/DD</span>)
             </div>
 
             <div class="form-group">
@@ -43,9 +53,9 @@
             </div>
 
             <div class="form-group">
-                <label for="idx4" class="col-sm-3 control-label">Chart Type</label>
+                <label for="idx6" class="col-sm-3 control-label">Chart Type</label>
                 <div class="col-sm-4">
-                    <div id="idx4">
+                    <div id="idx6">
                         <div th:each="ty : *{allTypes}">
                             <input type="radio" th:field="*{type}" th:value="${ty}" onclick="onclickme(this)"/>
                             <label th:for="${#ids.prev('type')}" th:text="${ty}"></label>
@@ -62,18 +72,14 @@
         <div id="table">
             <table class="table table-striped">
                 <tr>
+                    <th>Date</th>
                     <th>Resource Name</th>
-                    <th:block th:each="yr : ${yearsData}">
-                        <th th:text="${yr}"></th>
-                    </th:block>
                 </tr>
-                <!--<th:block th:each="dt : ${data}">-->
-                    <!--<tr>-->
-                        <!--<td th:text="${dt.id}">id</td>-->
-                        <!--<td th:text="${user.name}">id</td>-->
-                        <!--<td th:text="${user.email}">id</td>-->
-                    <!--</tr>-->
-                <!--</th:block>-->
+                <th:block th:each="yr : ${days}">
+                    <tr>
+                        <td th:text="${yr}"></td>
+                    </tr>
+                </th:block>
             </table>
         </div>
     </div>
@@ -86,9 +92,6 @@
 
 <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
-
-    var yearsList = [[${data}]]
-
     Highcharts.chart('container', {
         chart: {
             type: 'area'
@@ -97,8 +100,7 @@
             text: 'Past resource utilisation'
         },
         xAxis: {
-            categories: [[${yearsData}]],
-            tickmarkPlacement: 'off',
+            categories: [[${days}]],
             title: {
                 enabled: false
             }
@@ -106,11 +108,6 @@
         yAxis: {
             title: {
                 text: 'Reservations'
-            },
-            labels: {
-                formatter: function () {
-                    return this.value / 1000;
-                }
             }
         },
         tooltip: {

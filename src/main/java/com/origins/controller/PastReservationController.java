@@ -1,17 +1,29 @@
 package com.origins.controller;
 
+import com.origins.dao.KeyValue;
 import com.origins.dao.SearchData;
-import com.origins.domain.tables.Reservations;
-import com.origins.domain.tables.Resources;
+import com.origins.domain.tables.Users;
+import com.origins.util.DateUtil;
+import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jooq.types.UInteger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.origins.domain.tables.Reservations.RESERVATIONS;
+import static com.origins.domain.tables.Resources.RESOURCES;
+import static org.jooq.impl.DSL.count;
+import static org.jooq.impl.DSL.trueCondition;
 
 /**
  * Created by Amila-Kumara on 03/02/2017.
@@ -19,8 +31,30 @@ import java.util.*;
 @Controller
 public class PastReservationController {
 
-    @Autowired
     private DSLContext dsl;
+    private DateUtil dateUtil;
+
+    public PastReservationController(DSLContext dsl, DateUtil dateUtil) {
+        this.dsl = dsl;
+    }
+
+    @ModelAttribute("allResource")
+    public List<KeyValue<Integer>> allResource() {
+        List<KeyValue<Integer>> keyValues = new ArrayList<>();
+        keyValues.add(new KeyValue(-1, "All"));
+        dsl.selectFrom(RESOURCES).fetch()
+                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
+        return keyValues;
+    }
+
+    @ModelAttribute("allUsers")
+    public List<KeyValue<Integer>> allUsers() {
+        List<KeyValue<Integer>> keyValues = new ArrayList<>();
+        keyValues.add(new KeyValue(-1, "All"));
+        dsl.selectFrom(Users.USERS).fetch()
+                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
+        return keyValues;
+    }
 
     @RequestMapping("/passedReservations")
     public String init(final ModelMap modelMap) {
@@ -28,84 +62,62 @@ public class PastReservationController {
         return "passedReservations";
     }
 
-    @RequestMapping(value = "/passedReservations",params = {"search"})
-    public String searchData(final ModelMap modelMap,final SearchData searchData) {
+    @RequestMapping(value = "/passedReservations", params = {"search"})
+    public String searchData(final ModelMap modelMap, final SearchData searchData) {
 
-        List<String> years = Arrays.asList("02-01", "02-01", "02-03", "01-04", "01-05", "01-06", "01-07");
+        Condition condition = trueCondition();
 
-        Result<Record> fetch = dsl.select().from(Reservations.RESERVATIONS).innerJoin(Resources.RESOURCES).on(Reservations.RESERVATIONS.RESOURCE_ID.equal(Resources.RESOURCES.ID)).fetch();
+        if (searchData.getResource() != -1) {
+            condition = condition.and(RESOURCES.ID.equal(UInteger.valueOf(searchData.getResource())));
+        }
+        if (searchData.getStartDate() != null) {
+            condition = condition.and(RESERVATIONS.START.greaterOrEqual(Timestamp.valueOf(searchData.getStartDate().atStartOfDay())));
+        }
+        if (searchData.getEndDate() != null) {
+            condition = condition.and(RESERVATIONS.START.lessOrEqual(Timestamp.valueOf(searchData.getEndDate().atStartOfDay())));
+        }
+
+        List<LocalDateTime> daysList = dateUtil.getDaysBetween(searchData.getStartDate().atTime(0, 0, 0, 0), searchData.getEndDate().atTime(0, 0, 0, 0))
+                .collect(Collectors.toList());
+
+        List<String> days = daysList.stream().map(DateUtil::getFormatedDate).collect(Collectors.toList());
+
+        Result<Record> fetch = dsl.select(count(RESERVATIONS.RESOURCE_ID).as("count"))
+                .select(RESERVATIONS.fields())
+                .select(RESOURCES.fields())
+                .from(RESERVATIONS)
+                .innerJoin(RESOURCES)
+                .on(RESERVATIONS.RESOURCE_ID.equal(RESOURCES.ID))
+                .where(condition)
+                .groupBy(RESERVATIONS.RESOURCE_ID, RESERVATIONS.START, RESERVATIONS.END)
+                .fetch();
 
         System.out.println(fetch);
-        final List<Map> mapList=new ArrayList<>();
+        final List<Map> mapList = new ArrayList<>();
 
         //|id|resource_id|user_id|name|address|nic_number|conact_number|email_address|start|end|created_at|updated_at|id|category_id|name|location|description|created_at|updated_at|
         //|0 |1          |2      |3   |4      |5         |6            |7            |8    |9  |10        |11        |12|13         |14  |15      |16         |17        |18        |
-        fetch.stream().forEach(i->{
-            System.out.println(i);
-            System.out.println(i.getValue(1));
-            System.out.println(i.getValue(3));
+        fetch.stream().forEach(i -> {
+            Map<String, Object> map = new HashMap<>();
+            List<Integer> data=new ArrayList<>();
+            map.put("name", i.getValue(RESOURCES.NAME));
+
+
+            LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0,0,0,0);
+            LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0,0,0,0);
+            long l = Duration.between(startDateTime, endDateTime).toDays();
+            daysList.stream().forEach(day -> {
+                LocalDateTime dateTime = day.toLocalDate().atTime(0, 0, 0, 0);
+                if (startDateTime.equals(dateTime) || endDateTime.equals(dateTime) || (startDateTime.isBefore(dateTime) && endDateTime.isAfter(dateTime))){
+                    data.add(((Integer) i.getValue(0)));
+                }else{
+                    data.add(0);
+                }
+            });
+            map.put("data", data);
+            mapList.add(map);
         });
-
-        Map<String,Object> map1=new HashMap<>();
-        Map<String,Object> map2=new HashMap<>();
-        Map<String,Object> map3=new HashMap<>();
-        Map<String,Object> map4=new HashMap<>();
-        Map<String,Object> map5=new HashMap<>();
-        Map<String,Object> map6=new HashMap<>();
-        Map<String,Object> map7=new HashMap<>();
-        Map<String,Object> map8=new HashMap<>();
-        map1.put("name","Quis");
-        map1.put("data",Arrays.asList(0, 0, 0, 1, 2, 8, 0));
-
-        map2.put("name","Ducimus");
-        map2.put("data",Arrays.asList(0, 0, 0, 2, 2, 7, 0));
-
-        map3.put("name","Aliquid");
-        map3.put("data",Arrays.asList(0, 0, 0, 3, 1, 6, 0));
-
-        map4.put("name","Doloribus");
-        map4.put("data",Arrays.asList(0, 0, 0, 4, 1, 5, 0));
-
-        map5.put("name","Laborum");
-        map5.put("data",Arrays.asList(0, 0, 0, 5, 1, 4, 0));
-
-        map6.put("name","Aut");
-        map6.put("data",Arrays.asList(0, 0, 0, 6, 1, 3, 0));
-
-        map7.put("name","Cum");
-        map7.put("data",Arrays.asList(0, 0, 0, 7, 1, 2, 0));
-
-        map8.put("name","Reprehenderit");
-        map8.put("data",Arrays.asList(0, 0, 0, 8, 1, 1, 0));
-
-        if (searchData.getResource().equalsIgnoreCase("Quis")){
-            mapList.add(map1);
-        }else if (searchData.getResource().equalsIgnoreCase("Ducimus")){
-            mapList.add(map2);
-        }else if (searchData.getResource().equalsIgnoreCase("Aliquid")){
-            mapList.add(map3);
-        }else if (searchData.getResource().equalsIgnoreCase("Doloribus")){
-            mapList.add(map4);
-        }else if (searchData.getResource().equalsIgnoreCase("Laborum")){
-            mapList.add(map5);
-        }else if (searchData.getResource().equalsIgnoreCase("Aut")){
-            mapList.add(map6);
-        }else if (searchData.getResource().equalsIgnoreCase("Cum")){
-            mapList.add(map7);
-        }else if (searchData.getResource().equalsIgnoreCase("Reprehenderit")){
-            mapList.add(map8);
-        }else{
-            mapList.add(map1);
-            mapList.add(map2);
-            mapList.add(map3);
-            mapList.add(map4);
-            mapList.add(map5);
-            mapList.add(map6);
-            mapList.add(map7);
-            mapList.add(map8);
-        }
-        modelMap.addAttribute("searchData", new SearchData());
-        modelMap.addAttribute("yearsData", years);
+        modelMap.addAttribute("days", days);
         modelMap.addAttribute("data", mapList);
         return "passedReservations";
     }

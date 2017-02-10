@@ -1,7 +1,9 @@
 package com.origins.dao;
 
+import com.origins.util.DateUtil;
+
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,12 +12,18 @@ import java.util.List;
 public class SearchData {
     private List<String> allTypes;
     private String type;
-    private String resource;
+    private Integer resource;
     private String user;
-    private Date date;
+    private LocalDate startDate;
+    private LocalDate endDate;
+
+    protected final DateUtil dateUtil;
 
     public SearchData() {
-        allTypes= Arrays.asList("Chart","Table");
+        dateUtil = new DateUtil();
+        allTypes = Arrays.asList("Chart", "Table");
+        endDate = LocalDate.now();
+        startDate = endDate.plusMonths(-1);
     }
 
     public List<String> getAllTypes() {
@@ -34,11 +42,11 @@ public class SearchData {
         this.type = type;
     }
 
-    public String getResource() {
+    public Integer getResource() {
         return resource;
     }
 
-    public void setResource(String resource) {
+    public void setResource(Integer resource) {
         this.resource = resource;
     }
 
@@ -50,11 +58,19 @@ public class SearchData {
         this.user = user;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }

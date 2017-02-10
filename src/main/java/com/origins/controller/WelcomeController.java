@@ -3,9 +3,9 @@ package com.origins.controller;
 import com.origins.dao.SearchData;
 import com.origins.domain.tables.Users;
 import com.origins.domain.tables.records.UsersRecord;
+import com.origins.util.DateUtil;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,13 +23,18 @@ import static org.jooq.impl.DSL.trueCondition;
 @Controller
 public class WelcomeController {
 
-    @Autowired
-    private DSLContext dsl;
-
     @Value("${welcome.message:test}")
     private String message = "Hello World";
 
     private SearchData searchData;
+
+    private DSLContext dsl;
+    private DateUtil dateUtil;
+
+    public WelcomeController(DSLContext dsl, DateUtil dateUtil) {
+        this.dsl = dsl;
+        this.dateUtil = dateUtil;
+    }
 
     @RequestMapping("/")
     @CrossOrigin(origins = "*")
