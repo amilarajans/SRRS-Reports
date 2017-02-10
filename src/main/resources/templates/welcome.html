@@ -4,11 +4,7 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-    <link rel="stylesheet" th:href="@{/css/main.css}"
-          href="../../css/main.css" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
 
 </head>
 <body>
@@ -35,6 +31,33 @@
             <span th:text="'Message: ' + ${message}"></span>
         </h2>
     </div>
+
+    <form action="#" th:action="@{/}" th:object="${searchData}" method="post">
+
+        <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+
+        <input type="text" th:field="*{name}"/>
+
+        <button type="submit" class="btn-primary" name="search">Search</button>
+
+
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+            </tr>
+            <th:block th:each="user : ${userList}">
+                <tr>
+                    <td th:text="${user.id}">id</td>
+                    <td th:text="${user.name}">id</td>
+                    <td th:text="${user.email}">id</td>
+                </tr>
+            </th:block>
+        </table>
+    </form>
 
 </div>
 <!-- /.container -->

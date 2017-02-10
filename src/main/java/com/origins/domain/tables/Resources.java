@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resources extends TableImpl<ResourcesRecord> {
 
-    private static final long serialVersionUID = 1382695705;
+    private static final long serialVersionUID = 61870821;
 
     /**
      * The reference instance of <code>tsd_srrs.resources</code>

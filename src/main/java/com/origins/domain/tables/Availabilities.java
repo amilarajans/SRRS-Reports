@@ -7,22 +7,14 @@ package com.origins.domain.tables;
 import com.origins.domain.Keys;
 import com.origins.domain.TsdSrrs;
 import com.origins.domain.tables.records.AvailabilitiesRecord;
+import org.jooq.*;
+import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
+import javax.annotation.Generated;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.annotation.Generated;
-
-import org.jooq.Field;
-import org.jooq.ForeignKey;
-import org.jooq.Identity;
-import org.jooq.Schema;
-import org.jooq.Table;
-import org.jooq.TableField;
-import org.jooq.UniqueKey;
-import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
 
 /**
@@ -38,7 +30,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Availabilities extends TableImpl<AvailabilitiesRecord> {
 
-    private static final long serialVersionUID = 1829106190;
+    private static final long serialVersionUID = -971722558;
 
     /**
      * The reference instance of <code>tsd_srrs.availabilities</code>

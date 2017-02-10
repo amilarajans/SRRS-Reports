@@ -10,6 +10,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tsd-srrs`
 --
+CREATE DATABASE IF NOT EXISTS `tsd_srrs` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `tsd_srrs`;
 
 -- --------------------------------------------------------
 
@@ -38,24 +40,25 @@ CREATE TABLE `categories` (
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`, `icon`) VALUES
-  (1, 'Explicabo', 'Optio provident repudiandae nihil.', '2017-02-01 15:52:05', '2017-02-01 15:52:05', '28e9654c9f32488f960660a06deefad1.jpg'),
-  (2, 'Quam', 'Ducimus commodi reiciendis possimus consequatur aut et rerum delectus.', '2017-02-01 15:52:11', '2017-02-01 15:52:11', '19ab078ab682c07533a09b0d587c3fb0.jpg'),
-  (3, 'Voluptas', 'Non pariatur officia necessitatibus velit.', '2017-02-01 15:52:12', '2017-02-01 15:52:12', '1aa06ece5dd67fdb51b947274a05a811.jpg'),
-  (4, 'Quos', 'Eum fuga nisi numquam aliquam.', '2017-02-01 15:52:13', '2017-02-01 15:52:13', 'dc7c86ce18ccc051e155a5528fc95402.jpg'),
-  (5, 'Quam', 'Est necessitatibus tempora exercitationem praesentium.', '2017-02-01 15:52:14', '2017-02-01 15:52:14', '8f46cb105e868e81f2874cfaac5847d1.jpg'),
-  (6, 'Veniam', 'Quisquam voluptatem voluptatem fugiat natus non commodi.', '2017-02-01 15:52:15', '2017-02-01 15:52:15', 'c720189d4c7e9368ffa1a65e32aa6c8b.jpg'),
-  (7, 'Sint', 'Perspiciatis debitis ut nobis velit et perferendis ab quis.', '2017-02-01 15:52:16', '2017-02-01 15:52:16', 'd46536497c0a791159a783cc7b000b84.jpg'),
-  (8, 'Neque', 'Assumenda nesciunt doloremque eius maiores.', '2017-02-01 15:52:16', '2017-02-01 15:52:16', '8e789e3c6cf381b007dbe18280c6d27f.jpg'),
-  (9, 'Ut', 'Id laudantium repellat dolores placeat dolore quae sed.', '2017-02-01 15:52:17', '2017-02-01 15:52:17', '79e02de1b61925e483226b5134a85c6d.jpg'),
-  (10, 'Ut', 'Sed sit cumque maiores quis aut nemo dolorem.', '2017-02-01 15:52:18', '2017-02-01 15:52:18', '90a4adf841dd764ce4bbf1c9525bbc49.jpg');
+INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`, `icon`, `color`) VALUES
+  (1, 'A', 'Et dolores magni a dolorem ullam repellat.', '2017-02-05 04:01:56', '2017-02-05 04:01:56', '3fc3df51bca3d01fde532bb44614245b.jpg', '#f30397'),
+  (2, 'Eum', 'Molestias est tenetur iste eos.', '2017-02-05 04:01:58', '2017-02-05 04:01:58', 'b9ca894d60191d7aa7e8e799d0d0836b.jpg', '#a858a2'),
+  (3, 'Ullam', 'Iure sit distinctio quia sit deleniti ipsam.', '2017-02-05 04:01:59', '2017-02-05 04:01:59', '95fd98d086a9bcf73266a050fca7ae4f.jpg', '#137700'),
+  (4, 'Tempore', 'Amet ut blanditiis quo doloribus earum sint.', '2017-02-05 04:02:01', '2017-02-05 04:02:01', '9835c05c94cac4f79acff5dfece723e8.jpg', '#e7f0b5'),
+  (5, 'Sed', 'Architecto quia porro quod recusandae pariatur.', '2017-02-05 04:02:03', '2017-02-05 04:02:03', '54055c3217fc4b16a5784e27bab5a17b.jpg', '#a664d9'),
+  (6, 'Architecto', 'Magnam tempore voluptas laborum voluptatem.', '2017-02-05 04:02:04', '2017-02-05 04:02:04', 'bb93dc74a0e9225ac019bd6bcbd2bf2e.jpg', '#f5c841'),
+  (7, 'Impedit', 'Laboriosam omnis quidem laudantium.', '2017-02-05 04:02:06', '2017-02-05 04:02:06', '64fbdd0144d1b140432597f3d541601f.jpg', '#3944dd'),
+  (8, 'Minima', 'Iste facilis sit nam quia quis et omnis.', '2017-02-05 04:02:09', '2017-02-05 04:02:09', '8857ec1a7732130e8f8eadca28c4c762.jpg', '#5fbd51'),
+  (9, 'Tenetur', 'Quia alias dolorem eveniet sed laborum dolor.', '2017-02-05 04:02:10', '2017-02-05 04:02:10', '5e075fce46fa7b016fe16bfc7a98b9ea.jpg', '#5a335b'),
+  (10, 'Id', 'Amet molestiae voluptas aliquam qui.', '2017-02-05 04:02:12', '2017-02-05 04:02:12', 'ff49b608879743bc26b3ba5acfb6a8a8.jpg', '#1b35e3');
 
 -- --------------------------------------------------------
 
@@ -80,7 +83,11 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
   ('2017_01_27_233059_create_availabilities_table', 1),
   ('2017_01_27_233906_create_reservations_table', 1),
   ('2017_01_30_183355_add_icon_to_categories_table', 1),
-  ('2017_02_01_203940_add_reservations_to_reservations_table', 1);
+  ('2017_02_01_203940_add_reservations_to_reservations_table', 1),
+  ('2017_02_02_224105_create_students_table', 1),
+  ('2017_02_02_224125_create_staff_table', 1),
+  ('2017_02_04_232712_add_color_to_categories_table', 1),
+  ('2017_02_05_061232_create_permission_tables', 1);
 
 -- --------------------------------------------------------
 
@@ -97,12 +104,26 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reservations`
 --
 
 CREATE TABLE `reservations` (
   `id` int(10) UNSIGNED NOT NULL,
   `resource_id` int(10) UNSIGNED NOT NULL,
+  `user_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nic_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -118,17 +139,17 @@ CREATE TABLE `reservations` (
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`id`, `resource_id`, `name`, `address`, `nic_number`, `conact_number`, `email_address`, `start`, `end`, `created_at`, `updated_at`) VALUES
-  (1, 3, 'Dolorum', 'Inventore nihil.', 'dolorem', '163', 'eum', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (2, 4, 'Molestiae', 'Autem dolor.', 'delectus', '394', 'ea', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (3, 4, 'Sed', 'Voluptatum consequatur.', 'ut', '824', 'quia', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (4, 10, 'Mollitia', 'Ducimus amet quam.', 'quasi', '443', 'pariatur', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (5, 10, 'At', 'Rerum eum.', 'porro', '671', 'beatae', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (6, 7, 'Voluptas', 'Beatae ab.', 'repellat', '778', 'sed', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (7, 6, 'Unde', 'Odio quod quam.', 'et', '634', 'porro', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (8, 8, 'Ratione', 'Voluptatem voluptatum iste.', 'qui', '383', 'hic', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (9, 2, 'Atque', 'Vero voluptatem autem.', 'blanditiis', '641', 'iure', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15'),
-  (10, 6, 'Ex', 'Nostrum ea magni.', 'commodi', '451', 'error', '2017-02-01 21:23:15', '2017-02-01 21:23:15', '2017-02-01 15:53:15', '2017-02-01 15:53:15');
+INSERT INTO `reservations` (`id`, `resource_id`, `user_id`, `name`, `address`, `nic_number`, `conact_number`, `email_address`, `start`, `end`, `created_at`, `updated_at`) VALUES
+  (1, 2, '', 'Ut', 'Optio nobis asperiores.', 'animi', '229', 'quibusdam', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (2, 5, '', 'Ut', 'Optio maiores unde.', 'quia', '499', 'ut', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (3, 9, '', 'Molestiae', 'Quis sapiente est.', 'officia', '413', 'quae', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (4, 10, '', 'Est', 'Dolores nostrum tempora.', 'adipisci', '364', 'nihil', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (5, 1, '', 'At', 'Assumenda nisi.', 'illo', '423', 'iusto', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (6, 1, '', 'Ex', 'Quas rerum eveniet.', 'id', '230', 'facilis', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (7, 2, '', 'Aut', 'Iusto accusamus.', 'eum', '908', 'necessitatibus', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (8, 6, '', 'Optio', 'Odio temporibus velit.', 'sunt', '737', 'est', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (9, 3, '', 'Rerum', 'Sed blanditiis quis.', 'ipsum', '120', 'odio', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13'),
+  (10, 7, '', 'Vel', 'Consequatur et tempore.', 'similique', '389', 'molestias', '2017-02-05 09:32:13', '2017-02-05 09:32:13', '2017-02-05 04:02:13', '2017-02-05 04:02:13');
 
 -- --------------------------------------------------------
 
@@ -151,55 +172,158 @@ CREATE TABLE `resources` (
 --
 
 INSERT INTO `resources` (`id`, `category_id`, `name`, `location`, `description`, `created_at`, `updated_at`) VALUES
-  (1, 4, 'Quia', 'Sed quia.', 'Consectetur est consequatur voluptates recusandae debitis eos.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (2, 4, 'Facere', 'Hic beatae nostrum.', 'Modi dolor iure porro.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (3, 6, 'Exercitationem', 'Magni repellendus qui.', 'Deserunt velit amet vel.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (4, 10, 'Repellendus', 'Odit modi natus.', 'Molestiae eos vitae voluptatem harum saepe commodi.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (5, 9, 'Praesentium', 'Optio tempora.', 'Praesentium a maxime vitae corporis quia sunt.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (6, 4, 'Rerum', 'Animi porro omnis.', 'Aspernatur ratione a ipsam consequuntur rerum vero voluptas quis.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (7, 6, 'Animi', 'Error quis sed.', 'Unde aliquid aliquid debitis dolorem assumenda harum minima officiis.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (8, 10, 'Explicabo', 'Magni aut sit.', 'Debitis eaque quis sit dolores accusamus qui vel.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (9, 4, 'Voluptas', 'Inventore iusto.', 'Ipsum ab quibusdam asperiores ut dolorem laboriosam eligendi.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (10, 6, 'Libero', 'Consequatur aut id.', 'Quasi consectetur doloremque cumque ea illo aut dolores.', '2017-02-01 15:52:19', '2017-02-01 15:52:19'),
-  (11, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:20', '2017-02-01 16:29:20'),
-  (12, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:21', '2017-02-01 16:29:21'),
-  (13, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:21', '2017-02-01 16:29:21'),
-  (14, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:21', '2017-02-01 16:29:21'),
-  (15, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:21', '2017-02-01 16:29:21'),
-  (16, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:22', '2017-02-01 16:29:22'),
-  (17, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:33', '2017-02-01 16:29:33'),
-  (18, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:29:39', '2017-02-01 16:29:39'),
-  (19, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:30:03', '2017-02-01 16:30:03'),
-  (20, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:30:04', '2017-02-01 16:30:04'),
-  (21, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:30:05', '2017-02-01 16:30:05'),
-  (22, 1, 'res11', 'location', 'dkdadkas;d', '2017-02-01 16:30:14', '2017-02-01 16:30:14');
+  (1, 8, 'Quis', 'Recusandae voluptate.', 'Eos similique rerum nam saepe aut.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (2, 1, 'Ducimus', 'Laboriosam numquam nostrum.', 'Ipsam quasi atque sint dolores possimus at.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (3, 5, 'Cum', 'Nobis maxime aspernatur.', 'Autem qui saepe reiciendis.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (4, 3, 'Laborum', 'Enim dolores.', 'Fugit et aut et.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (5, 9, 'Aliquid', 'Veniam deleniti.', 'Odio maxime sed omnis quae facere sit perferendis atque.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (6, 9, 'Aut', 'Eum et.', 'Exercitationem sint totam possimus.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (7, 7, 'Reprehenderit', 'Ullam totam.', 'Adipisci est perferendis soluta consequatur rerum non.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (8, 8, 'Adipisci', 'Libero sint vitae.', 'Libero ex dolor est ut tempore voluptas quae.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (9, 3, 'Doloribus', 'Nostrum velit.', 'Non sit a odio ut ut cumque totam et.', '2017-02-05 04:02:12', '2017-02-05 04:02:12'),
+  (10, 5, 'Laborum', 'Deleniti aut.', 'Mollitia officia non adipisci pariatur error quod sunt id.', '2017-02-05 04:02:12', '2017-02-05 04:02:12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `role_has_permissions`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `role_has_permissions` (
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `reg_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pin` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_of_birth` datetime NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contact_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `post` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `reg_id`, `pin`, `name`, `date_of_birth`, `address`, `email_address`, `contact_number`, `post`, `created_at`, `updated_at`) VALUES
+  (1, 'as-99', 696, 'Vladimir Kuhic', '2017-02-05 09:31:54', 'Nisi quae.', 'staff@srrs.app', '94777278818', 'hic', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (2, 'as-620', 154, 'Colton Pfannerstill', '2017-02-05 09:31:54', 'Aliquam adipisci.', 'staff@srrs.app', '94773789094', 'fugit', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (3, 'as-680', 635, 'Mallie DuBuque', '2017-02-05 09:31:54', 'Rerum est.', 'staff@srrs.app', '94773789094', 'repudiandae', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (4, 'as-676', 876, 'Prof. Judah Beier', '2017-02-05 09:31:54', 'Hic sunt.', 'staff@srrs.app', '94773789094', 'dicta', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (5, 'as-682', 292, 'Carson Nikolaus', '2017-02-05 09:31:54', 'Vel saepe consectetur.', 'staff@srrs.app', '94773789094', 'nulla', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (6, 'nas-785', 577, 'Luther Halvorson IV', '2017-02-05 09:31:54', 'Consequatur labore beatae.', 'staff@srrs.app', '94773789094', 'provident', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (7, 'nas-225', 214, 'Keshawn Pfannerstill', '2017-02-05 09:31:54', 'Aspernatur sit reprehenderit.', 'staff@srrs.app', '94773789094', 'magni', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (8, 'nas-673', 394, 'Miss Assunta Sauer DVM', '2017-02-05 09:31:54', 'Esse quia.', 'staff@srrs.app', '94773789094', 'ab', '2017-02-05 04:01:54', '0000-00-00 00:00:00'),
+  (9, 'nas-299', 566, 'Melyssa Vandervort', '2017-02-05 09:31:54', 'Consectetur omnis est.', 'staff@srrs.app', '94773789094', 'est', '2017-02-05 04:01:54', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `reg_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pin` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_of_birth` datetime NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contact_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `reg_id`, `pin`, `name`, `date_of_birth`, `address`, `email_address`, `contact_number`, `class`, `created_at`, `updated_at`) VALUES
+  (1, 's-99', 957, 'Miss Carmella McCullough', '2017-02-05 09:31:53', 'Fugit ex.', 'student@srrs.app', '94777278818', '11B', '2017-02-05 04:01:53', '0000-00-00 00:00:00'),
+  (2, 's-693', 224, 'Mr. Jackson Beatty DVM', '2017-02-05 09:31:53', 'Ducimus qui ex.', 'student@srrs.app', '94773789094', '11B', '2017-02-05 04:01:53', '0000-00-00 00:00:00'),
+  (3, 's-511', 482, 'Mr. Rocio Stark II', '2017-02-05 09:31:53', 'Eum amet.', 'student@srrs.app', '94773789094', '11B', '2017-02-05 04:01:53', '0000-00-00 00:00:00'),
+  (4, 's-816', 535, 'Jasmin Durgan', '2017-02-05 09:31:53', 'Autem repellendus.', 'student@srrs.app', '94773789094', '11B', '2017-02-05 04:01:53', '0000-00-00 00:00:00'),
+  (5, 's-231', 792, 'Darron Fay', '2017-02-05 09:31:53', 'Rerum eligendi.', 'student@srrs.app', '94773789094', '11B', '2017-02-05 04:01:53', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_has_permissions`
+--
+
+CREATE TABLE `user_has_permissions` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `permission_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_has_roles`
+--
+
+CREATE TABLE `user_has_roles` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(10) UNSIGNED NOT NULL,
+  `activation_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-  (1, 'Ms. Molly Spencer V', 'admin@srrs.app', '$2y$10$Xf4tDcBiX8RojL1sMUNnre/AhpRRfuOHRuBgf/wOiBWaSqKZzQf9G', NULL, '2017-02-01 15:52:03', '0000-00-00 00:00:00'),
-  (2, 'Sienna Gaylord', 'rippin.edythe@king.net', '$2y$10$N0ie/o3nC.o46qLhOFWDxuyFyXWYE7LTUaM2HXQGk1EH./.u66slm', NULL, '2017-02-01 15:52:03', '2017-02-01 15:52:03'),
-  (3, 'Dr. Ryder Labadie', 'eschaden@jacobi.com', '$2y$10$YmGFx0epe4w6f/J8pt7nDuHwjf14ZAHko6w.KIPtaH8x7dbBLPQt.', NULL, '2017-02-01 15:52:03', '2017-02-01 15:52:03'),
-  (4, 'Vickie Gerhold', 'kayleigh91@treutel.com', '$2y$10$zXV9JKLO9si9Jm2iVs71zOYl73f0Z5y/Sif8xL5PhJ84J1E./8uj2', NULL, '2017-02-01 15:52:03', '2017-02-01 15:52:03'),
-  (5, 'Arnoldo Marquardt', 'xemmerich@yahoo.com', '$2y$10$FiqAg8CIytg77//d39Et.epDYZDBzTsVVTpWzKRPJ8JVvNLpQmOH6', NULL, '2017-02-01 15:52:03', '2017-02-01 15:52:03');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`, `activation_key`, `remember_token`, `created_at`, `updated_at`) VALUES
+  (1, 'Michelle Kshlerin', 'admin@srrs.app', '$2y$10$8GErdBu6jVxkU7W.cgNAhufNVk.brH2Zc1TwLvzRLD/eZDTvjYjcK', 'admin', 1, 'eewlepeqpepweleqwel', NULL, '2017-02-05 04:01:52', '0000-00-00 00:00:00'),
+  (2, 'Aric DuBuque', 'srutherford@auer.com', '$2y$10$DzIyU8N4ONrHQLhqBkIlS.QTE8qBdB0Rm0Yqud9UmdVYDcfPLLnr6', 'operator', 1, 'eewlepeqpepweleqwel', NULL, '2017-02-05 04:01:53', '2017-02-05 04:01:53'),
+  (3, 'Ellsworth Pouros DVM', 'fdaugherty@lockman.com', '$2y$10$nhv75TXpfi4X9K/NXEkss.pPJaliNYR0nUrgLamHsMzeLItI4Kham', 'operator', 1, 'eewlepeqpepweleqwel', NULL, '2017-02-05 04:01:53', '2017-02-05 04:01:53'),
+  (4, 'Ms. Rosalee Ernser DVM', 'ray54@hotmail.com', '$2y$10$H4q1O/vMPRg9p3l3SJeUH.LEa.oZ34fLcFi5f/MtBPIc3IfecilSq', 'operator', 1, 'eewlepeqpepweleqwel', NULL, '2017-02-05 04:01:53', '2017-02-05 04:01:53'),
+  (5, 'Dr. Vito Greenholt', 'ben71@howell.biz', '$2y$10$pIDDQY/nzd4TJVoHUG3/D.W2VlYKeqRT1wQvmKM6UEY7b.fRYl1/W', 'operator', 1, 'eewlepeqpepweleqwel', NULL, '2017-02-05 04:01:53', '2017-02-05 04:01:53');
 
 --
 -- Indexes for dumped tables
@@ -226,6 +350,13 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_token_index` (`token`);
 
 --
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_unique` (`name`);
+
+--
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
@@ -240,11 +371,53 @@ ALTER TABLE `resources`
   ADD KEY `resources_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `role_has_permissions`
 --
-ALTER TABLE `user`
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_email_unique` (`email`);
+  ADD UNIQUE KEY `roles_name_unique` (`name`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `staff_reg_id_unique` (`reg_id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `students_reg_id_unique` (`reg_id`);
+
+--
+-- Indexes for table `user_has_permissions`
+--
+ALTER TABLE `user_has_permissions`
+  ADD PRIMARY KEY (`user_id`,`permission_id`),
+  ADD KEY `user_has_permissions_permission_id_foreign` (`permission_id`);
+
+--
+-- Indexes for table `user_has_roles`
+--
+ALTER TABLE `user_has_roles`
+  ADD PRIMARY KEY (`role_id`,`user_id`),
+  ADD KEY `user_has_roles_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -261,6 +434,11 @@ ALTER TABLE `availabilities`
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
@@ -269,11 +447,26 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT for table `resources`
 --
 ALTER TABLE `resources`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `roles`
 --
-ALTER TABLE `user`
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
@@ -295,7 +488,28 @@ ALTER TABLE `reservations`
 -- Constraints for table `resources`
 --
 ALTER TABLE `resources`
-  ADD CONSTRAINT `resources_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+  ADD CONSTRAINT `resources_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_has_permissions`
+--
+ALTER TABLE `user_has_permissions`
+  ADD CONSTRAINT `user_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_has_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_has_roles`
+--
+ALTER TABLE `user_has_roles`
+  ADD CONSTRAINT `user_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_has_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

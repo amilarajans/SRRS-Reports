@@ -35,9 +35,13 @@ public class Keys {
 
     public static final Identity<AvailabilitiesRecord, UInteger> IDENTITY_AVAILABILITIES = Identities0.IDENTITY_AVAILABILITIES;
     public static final Identity<CategoriesRecord, UInteger> IDENTITY_CATEGORIES = Identities0.IDENTITY_CATEGORIES;
+    public static final Identity<PermissionsRecord, UInteger> IDENTITY_PERMISSIONS = Identities0.IDENTITY_PERMISSIONS;
     public static final Identity<ReservationsRecord, UInteger> IDENTITY_RESERVATIONS = Identities0.IDENTITY_RESERVATIONS;
     public static final Identity<ResourcesRecord, UInteger> IDENTITY_RESOURCES = Identities0.IDENTITY_RESOURCES;
-    public static final Identity<UserRecord, UInteger> IDENTITY_USER = Identities0.IDENTITY_USER;
+    public static final Identity<RolesRecord, UInteger> IDENTITY_ROLES = Identities0.IDENTITY_ROLES;
+    public static final Identity<StaffRecord, UInteger> IDENTITY_STAFF = Identities0.IDENTITY_STAFF;
+    public static final Identity<StudentsRecord, UInteger> IDENTITY_STUDENTS = Identities0.IDENTITY_STUDENTS;
+    public static final Identity<UsersRecord, UInteger> IDENTITY_USERS = Identities0.IDENTITY_USERS;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -45,10 +49,21 @@ public class Keys {
 
     public static final UniqueKey<AvailabilitiesRecord> KEY_AVAILABILITIES_PRIMARY = UniqueKeys0.KEY_AVAILABILITIES_PRIMARY;
     public static final UniqueKey<CategoriesRecord> KEY_CATEGORIES_PRIMARY = UniqueKeys0.KEY_CATEGORIES_PRIMARY;
+    public static final UniqueKey<PermissionsRecord> KEY_PERMISSIONS_PRIMARY = UniqueKeys0.KEY_PERMISSIONS_PRIMARY;
+    public static final UniqueKey<PermissionsRecord> KEY_PERMISSIONS_PERMISSIONS_NAME_UNIQUE = UniqueKeys0.KEY_PERMISSIONS_PERMISSIONS_NAME_UNIQUE;
     public static final UniqueKey<ReservationsRecord> KEY_RESERVATIONS_PRIMARY = UniqueKeys0.KEY_RESERVATIONS_PRIMARY;
     public static final UniqueKey<ResourcesRecord> KEY_RESOURCES_PRIMARY = UniqueKeys0.KEY_RESOURCES_PRIMARY;
-    public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
-    public static final UniqueKey<UserRecord> KEY_USER_USER_EMAIL_UNIQUE = UniqueKeys0.KEY_USER_USER_EMAIL_UNIQUE;
+    public static final UniqueKey<RolesRecord> KEY_ROLES_PRIMARY = UniqueKeys0.KEY_ROLES_PRIMARY;
+    public static final UniqueKey<RolesRecord> KEY_ROLES_ROLES_NAME_UNIQUE = UniqueKeys0.KEY_ROLES_ROLES_NAME_UNIQUE;
+    public static final UniqueKey<RoleHasPermissionsRecord> KEY_ROLE_HAS_PERMISSIONS_PRIMARY = UniqueKeys0.KEY_ROLE_HAS_PERMISSIONS_PRIMARY;
+    public static final UniqueKey<StaffRecord> KEY_STAFF_PRIMARY = UniqueKeys0.KEY_STAFF_PRIMARY;
+    public static final UniqueKey<StaffRecord> KEY_STAFF_STAFF_REG_ID_UNIQUE = UniqueKeys0.KEY_STAFF_STAFF_REG_ID_UNIQUE;
+    public static final UniqueKey<StudentsRecord> KEY_STUDENTS_PRIMARY = UniqueKeys0.KEY_STUDENTS_PRIMARY;
+    public static final UniqueKey<StudentsRecord> KEY_STUDENTS_STUDENTS_REG_ID_UNIQUE = UniqueKeys0.KEY_STUDENTS_STUDENTS_REG_ID_UNIQUE;
+    public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = UniqueKeys0.KEY_USERS_PRIMARY;
+    public static final UniqueKey<UsersRecord> KEY_USERS_USERS_EMAIL_UNIQUE = UniqueKeys0.KEY_USERS_USERS_EMAIL_UNIQUE;
+    public static final UniqueKey<UserHasPermissionsRecord> KEY_USER_HAS_PERMISSIONS_PRIMARY = UniqueKeys0.KEY_USER_HAS_PERMISSIONS_PRIMARY;
+    public static final UniqueKey<UserHasRolesRecord> KEY_USER_HAS_ROLES_PRIMARY = UniqueKeys0.KEY_USER_HAS_ROLES_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -57,6 +72,12 @@ public class Keys {
     public static final ForeignKey<AvailabilitiesRecord, ResourcesRecord> AVAILABILITIES_RESOURCE_ID_FOREIGN = ForeignKeys0.AVAILABILITIES_RESOURCE_ID_FOREIGN;
     public static final ForeignKey<ReservationsRecord, ResourcesRecord> RESERVATIONS_RESOURCE_ID_FOREIGN = ForeignKeys0.RESERVATIONS_RESOURCE_ID_FOREIGN;
     public static final ForeignKey<ResourcesRecord, CategoriesRecord> RESOURCES_CATEGORY_ID_FOREIGN = ForeignKeys0.RESOURCES_CATEGORY_ID_FOREIGN;
+    public static final ForeignKey<RoleHasPermissionsRecord, PermissionsRecord> ROLE_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN = ForeignKeys0.ROLE_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN;
+    public static final ForeignKey<RoleHasPermissionsRecord, RolesRecord> ROLE_HAS_PERMISSIONS_ROLE_ID_FOREIGN = ForeignKeys0.ROLE_HAS_PERMISSIONS_ROLE_ID_FOREIGN;
+    public static final ForeignKey<UserHasPermissionsRecord, UsersRecord> USER_HAS_PERMISSIONS_USER_ID_FOREIGN = ForeignKeys0.USER_HAS_PERMISSIONS_USER_ID_FOREIGN;
+    public static final ForeignKey<UserHasPermissionsRecord, PermissionsRecord> USER_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN = ForeignKeys0.USER_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN;
+    public static final ForeignKey<UserHasRolesRecord, RolesRecord> USER_HAS_ROLES_ROLE_ID_FOREIGN = ForeignKeys0.USER_HAS_ROLES_ROLE_ID_FOREIGN;
+    public static final ForeignKey<UserHasRolesRecord, UsersRecord> USER_HAS_ROLES_USER_ID_FOREIGN = ForeignKeys0.USER_HAS_ROLES_USER_ID_FOREIGN;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -65,23 +86,44 @@ public class Keys {
     private static class Identities0 extends AbstractKeys {
         public static Identity<AvailabilitiesRecord, UInteger> IDENTITY_AVAILABILITIES = createIdentity(Availabilities.AVAILABILITIES, Availabilities.AVAILABILITIES.ID);
         public static Identity<CategoriesRecord, UInteger> IDENTITY_CATEGORIES = createIdentity(Categories.CATEGORIES, Categories.CATEGORIES.ID);
+        public static Identity<PermissionsRecord, UInteger> IDENTITY_PERMISSIONS = createIdentity(Permissions.PERMISSIONS, Permissions.PERMISSIONS.ID);
         public static Identity<ReservationsRecord, UInteger> IDENTITY_RESERVATIONS = createIdentity(Reservations.RESERVATIONS, Reservations.RESERVATIONS.ID);
         public static Identity<ResourcesRecord, UInteger> IDENTITY_RESOURCES = createIdentity(Resources.RESOURCES, Resources.RESOURCES.ID);
-        public static Identity<UserRecord, UInteger> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
+        public static Identity<RolesRecord, UInteger> IDENTITY_ROLES = createIdentity(Roles.ROLES, Roles.ROLES.ID);
+        public static Identity<StaffRecord, UInteger> IDENTITY_STAFF = createIdentity(Staff.STAFF, Staff.STAFF.ID);
+        public static Identity<StudentsRecord, UInteger> IDENTITY_STUDENTS = createIdentity(Students.STUDENTS, Students.STUDENTS.ID);
+        public static Identity<UsersRecord, UInteger> IDENTITY_USERS = createIdentity(Users.USERS, Users.USERS.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AvailabilitiesRecord> KEY_AVAILABILITIES_PRIMARY = createUniqueKey(Availabilities.AVAILABILITIES, "KEY_availabilities_PRIMARY", Availabilities.AVAILABILITIES.ID);
         public static final UniqueKey<CategoriesRecord> KEY_CATEGORIES_PRIMARY = createUniqueKey(Categories.CATEGORIES, "KEY_categories_PRIMARY", Categories.CATEGORIES.ID);
+        public static final UniqueKey<PermissionsRecord> KEY_PERMISSIONS_PRIMARY = createUniqueKey(Permissions.PERMISSIONS, "KEY_permissions_PRIMARY", Permissions.PERMISSIONS.ID);
+        public static final UniqueKey<PermissionsRecord> KEY_PERMISSIONS_PERMISSIONS_NAME_UNIQUE = createUniqueKey(Permissions.PERMISSIONS, "KEY_permissions_permissions_name_unique", Permissions.PERMISSIONS.NAME);
         public static final UniqueKey<ReservationsRecord> KEY_RESERVATIONS_PRIMARY = createUniqueKey(Reservations.RESERVATIONS, "KEY_reservations_PRIMARY", Reservations.RESERVATIONS.ID);
         public static final UniqueKey<ResourcesRecord> KEY_RESOURCES_PRIMARY = createUniqueKey(Resources.RESOURCES, "KEY_resources_PRIMARY", Resources.RESOURCES.ID);
-        public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.ID);
-        public static final UniqueKey<UserRecord> KEY_USER_USER_EMAIL_UNIQUE = createUniqueKey(User.USER, "KEY_user_user_email_unique", User.USER.EMAIL);
+        public static final UniqueKey<RolesRecord> KEY_ROLES_PRIMARY = createUniqueKey(Roles.ROLES, "KEY_roles_PRIMARY", Roles.ROLES.ID);
+        public static final UniqueKey<RolesRecord> KEY_ROLES_ROLES_NAME_UNIQUE = createUniqueKey(Roles.ROLES, "KEY_roles_roles_name_unique", Roles.ROLES.NAME);
+        public static final UniqueKey<RoleHasPermissionsRecord> KEY_ROLE_HAS_PERMISSIONS_PRIMARY = createUniqueKey(RoleHasPermissions.ROLE_HAS_PERMISSIONS, "KEY_role_has_permissions_PRIMARY", RoleHasPermissions.ROLE_HAS_PERMISSIONS.PERMISSION_ID, RoleHasPermissions.ROLE_HAS_PERMISSIONS.ROLE_ID);
+        public static final UniqueKey<StaffRecord> KEY_STAFF_PRIMARY = createUniqueKey(Staff.STAFF, "KEY_staff_PRIMARY", Staff.STAFF.ID);
+        public static final UniqueKey<StaffRecord> KEY_STAFF_STAFF_REG_ID_UNIQUE = createUniqueKey(Staff.STAFF, "KEY_staff_staff_reg_id_unique", Staff.STAFF.REG_ID);
+        public static final UniqueKey<StudentsRecord> KEY_STUDENTS_PRIMARY = createUniqueKey(Students.STUDENTS, "KEY_students_PRIMARY", Students.STUDENTS.ID);
+        public static final UniqueKey<StudentsRecord> KEY_STUDENTS_STUDENTS_REG_ID_UNIQUE = createUniqueKey(Students.STUDENTS, "KEY_students_students_reg_id_unique", Students.STUDENTS.REG_ID);
+        public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = createUniqueKey(Users.USERS, "KEY_users_PRIMARY", Users.USERS.ID);
+        public static final UniqueKey<UsersRecord> KEY_USERS_USERS_EMAIL_UNIQUE = createUniqueKey(Users.USERS, "KEY_users_users_email_unique", Users.USERS.EMAIL);
+        public static final UniqueKey<UserHasPermissionsRecord> KEY_USER_HAS_PERMISSIONS_PRIMARY = createUniqueKey(UserHasPermissions.USER_HAS_PERMISSIONS, "KEY_user_has_permissions_PRIMARY", UserHasPermissions.USER_HAS_PERMISSIONS.USER_ID, UserHasPermissions.USER_HAS_PERMISSIONS.PERMISSION_ID);
+        public static final UniqueKey<UserHasRolesRecord> KEY_USER_HAS_ROLES_PRIMARY = createUniqueKey(UserHasRoles.USER_HAS_ROLES, "KEY_user_has_roles_PRIMARY", UserHasRoles.USER_HAS_ROLES.ROLE_ID, UserHasRoles.USER_HAS_ROLES.USER_ID);
     }
 
     private static class ForeignKeys0 extends AbstractKeys {
-        public static final ForeignKey<AvailabilitiesRecord, ResourcesRecord> AVAILABILITIES_RESOURCE_ID_FOREIGN = createForeignKey(com.origins.domain.Keys.KEY_RESOURCES_PRIMARY, Availabilities.AVAILABILITIES, "availabilities_resource_id_foreign", Availabilities.AVAILABILITIES.RESOURCE_ID);
-        public static final ForeignKey<ReservationsRecord, ResourcesRecord> RESERVATIONS_RESOURCE_ID_FOREIGN = createForeignKey(com.origins.domain.Keys.KEY_RESOURCES_PRIMARY, Reservations.RESERVATIONS, "reservations_resource_id_foreign", Reservations.RESERVATIONS.RESOURCE_ID);
-        public static final ForeignKey<ResourcesRecord, CategoriesRecord> RESOURCES_CATEGORY_ID_FOREIGN = createForeignKey(com.origins.domain.Keys.KEY_CATEGORIES_PRIMARY, Resources.RESOURCES, "resources_category_id_foreign", Resources.RESOURCES.CATEGORY_ID);
+        public static final ForeignKey<AvailabilitiesRecord, ResourcesRecord> AVAILABILITIES_RESOURCE_ID_FOREIGN = createForeignKey(Keys.KEY_RESOURCES_PRIMARY, Availabilities.AVAILABILITIES, "availabilities_resource_id_foreign", Availabilities.AVAILABILITIES.RESOURCE_ID);
+        public static final ForeignKey<ReservationsRecord, ResourcesRecord> RESERVATIONS_RESOURCE_ID_FOREIGN = createForeignKey(Keys.KEY_RESOURCES_PRIMARY, Reservations.RESERVATIONS, "reservations_resource_id_foreign", Reservations.RESERVATIONS.RESOURCE_ID);
+        public static final ForeignKey<ResourcesRecord, CategoriesRecord> RESOURCES_CATEGORY_ID_FOREIGN = createForeignKey(Keys.KEY_CATEGORIES_PRIMARY, Resources.RESOURCES, "resources_category_id_foreign", Resources.RESOURCES.CATEGORY_ID);
+        public static final ForeignKey<RoleHasPermissionsRecord, PermissionsRecord> ROLE_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN = createForeignKey(Keys.KEY_PERMISSIONS_PRIMARY, RoleHasPermissions.ROLE_HAS_PERMISSIONS, "role_has_permissions_permission_id_foreign", RoleHasPermissions.ROLE_HAS_PERMISSIONS.PERMISSION_ID);
+        public static final ForeignKey<RoleHasPermissionsRecord, RolesRecord> ROLE_HAS_PERMISSIONS_ROLE_ID_FOREIGN = createForeignKey(Keys.KEY_ROLES_PRIMARY, RoleHasPermissions.ROLE_HAS_PERMISSIONS, "role_has_permissions_role_id_foreign", RoleHasPermissions.ROLE_HAS_PERMISSIONS.ROLE_ID);
+        public static final ForeignKey<UserHasPermissionsRecord, UsersRecord> USER_HAS_PERMISSIONS_USER_ID_FOREIGN = createForeignKey(Keys.KEY_USERS_PRIMARY, UserHasPermissions.USER_HAS_PERMISSIONS, "user_has_permissions_user_id_foreign", UserHasPermissions.USER_HAS_PERMISSIONS.USER_ID);
+        public static final ForeignKey<UserHasPermissionsRecord, PermissionsRecord> USER_HAS_PERMISSIONS_PERMISSION_ID_FOREIGN = createForeignKey(Keys.KEY_PERMISSIONS_PRIMARY, UserHasPermissions.USER_HAS_PERMISSIONS, "user_has_permissions_permission_id_foreign", UserHasPermissions.USER_HAS_PERMISSIONS.PERMISSION_ID);
+        public static final ForeignKey<UserHasRolesRecord, RolesRecord> USER_HAS_ROLES_ROLE_ID_FOREIGN = createForeignKey(Keys.KEY_ROLES_PRIMARY, UserHasRoles.USER_HAS_ROLES, "user_has_roles_role_id_foreign", UserHasRoles.USER_HAS_ROLES.ROLE_ID);
+        public static final ForeignKey<UserHasRolesRecord, UsersRecord> USER_HAS_ROLES_USER_ID_FOREIGN = createForeignKey(Keys.KEY_USERS_PRIMARY, UserHasRoles.USER_HAS_ROLES, "user_has_roles_user_id_foreign", UserHasRoles.USER_HAS_ROLES.USER_ID);
     }
 }

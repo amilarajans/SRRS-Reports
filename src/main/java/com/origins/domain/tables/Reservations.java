@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Reservations extends TableImpl<ReservationsRecord> {
 
-    private static final long serialVersionUID = 1916268940;
+    private static final long serialVersionUID = -2091117107;
 
     /**
      * The reference instance of <code>tsd_srrs.reservations</code>
@@ -62,6 +62,11 @@ public class Reservations extends TableImpl<ReservationsRecord> {
      * The column <code>tsd_srrs.reservations.resource_id</code>.
      */
     public final TableField<ReservationsRecord, UInteger> RESOURCE_ID = createField("resource_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+
+    /**
+     * The column <code>tsd_srrs.reservations.user_id</code>.
+     */
+    public final TableField<ReservationsRecord, String> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
      * The column <code>tsd_srrs.reservations.name</code>.

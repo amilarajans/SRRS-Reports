@@ -31,7 +31,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AvailabilitiesRecord extends UpdatableRecordImpl<AvailabilitiesRecord> implements Record6<UInteger, UInteger, Timestamp, Timestamp, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = -1805329852;
+    private static final long serialVersionUID = -90526590;
 
     /**
      * Setter for <code>tsd_srrs.availabilities.id</code>.

@@ -29,7 +29,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Migrations extends TableImpl<MigrationsRecord> {
 
-    private static final long serialVersionUID = 579833414;
+    private static final long serialVersionUID = -1465012896;
 
     /**
      * The reference instance of <code>tsd_srrs.migrations</code>

@@ -31,7 +31,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PasswordResets extends TableImpl<PasswordResetsRecord> {
 
-    private static final long serialVersionUID = -2051070666;
+    private static final long serialVersionUID = 775551836;
 
     /**
      * The reference instance of <code>tsd_srrs.password_resets</code>

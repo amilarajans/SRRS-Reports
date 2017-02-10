@@ -6,11 +6,10 @@ import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
 import org.jooq.impl.DefaultExecuteListenerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
@@ -23,21 +22,20 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:config.properties")
 public class InitialConfiguration {
 
     @Autowired
-    private Environment environment;
+    private DataSourceProperties dataSourceProperties;
 
     @Bean
     @Primary
     public DataSource dataSource() {
         DriverManagerDataSource dataSource=new DriverManagerDataSource();
 
-        dataSource.setUrl(environment.getRequiredProperty("db.url"));
-        dataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
-        dataSource.setUsername(environment.getRequiredProperty("db.username"));
-        dataSource.setPassword(environment.getRequiredProperty("db.password"));
+        dataSource.setUrl(dataSourceProperties.getUrl());
+        dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+        dataSource.setUsername(dataSourceProperties.getUsername());
+        dataSource.setPassword(dataSourceProperties.getPassword());
 
         return dataSource;
     }
@@ -73,9 +71,7 @@ public class InitialConfiguration {
         jooqConfiguration.set(connectionProvider());
         jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));
 
-        String sqlDialectName = environment.getRequiredProperty("jooq.sql.dialect");
-        SQLDialect dialect = SQLDialect.valueOf(sqlDialectName);
-        jooqConfiguration.set(dialect);
+        jooqConfiguration.set(SQLDialect.MYSQL);
 
         return jooqConfiguration;
     }

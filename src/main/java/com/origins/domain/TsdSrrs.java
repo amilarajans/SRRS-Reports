@@ -29,7 +29,7 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TsdSrrs extends SchemaImpl {
 
-    private static final long serialVersionUID = 352944105;
+    private static final long serialVersionUID = 742938090;
 
     /**
      * The reference instance of <code>tsd_srrs</code>
@@ -57,6 +57,11 @@ public class TsdSrrs extends SchemaImpl {
     public final PasswordResets PASSWORD_RESETS = com.origins.domain.tables.PasswordResets.PASSWORD_RESETS;
 
     /**
+     * The table <code>tsd_srrs.permissions</code>.
+     */
+    public final Permissions PERMISSIONS = com.origins.domain.tables.Permissions.PERMISSIONS;
+
+    /**
      * The table <code>tsd_srrs.reservations</code>.
      */
     public final Reservations RESERVATIONS = com.origins.domain.tables.Reservations.RESERVATIONS;
@@ -67,9 +72,39 @@ public class TsdSrrs extends SchemaImpl {
     public final Resources RESOURCES = com.origins.domain.tables.Resources.RESOURCES;
 
     /**
-     * The table <code>tsd_srrs.user</code>.
+     * The table <code>tsd_srrs.roles</code>.
      */
-    public final User USER = com.origins.domain.tables.User.USER;
+    public final Roles ROLES = com.origins.domain.tables.Roles.ROLES;
+
+    /**
+     * The table <code>tsd_srrs.role_has_permissions</code>.
+     */
+    public final RoleHasPermissions ROLE_HAS_PERMISSIONS = com.origins.domain.tables.RoleHasPermissions.ROLE_HAS_PERMISSIONS;
+
+    /**
+     * The table <code>tsd_srrs.staff</code>.
+     */
+    public final Staff STAFF = com.origins.domain.tables.Staff.STAFF;
+
+    /**
+     * The table <code>tsd_srrs.students</code>.
+     */
+    public final Students STUDENTS = com.origins.domain.tables.Students.STUDENTS;
+
+    /**
+     * The table <code>tsd_srrs.users</code>.
+     */
+    public final Users USERS = com.origins.domain.tables.Users.USERS;
+
+    /**
+     * The table <code>tsd_srrs.user_has_permissions</code>.
+     */
+    public final UserHasPermissions USER_HAS_PERMISSIONS = com.origins.domain.tables.UserHasPermissions.USER_HAS_PERMISSIONS;
+
+    /**
+     * The table <code>tsd_srrs.user_has_roles</code>.
+     */
+    public final UserHasRoles USER_HAS_ROLES = com.origins.domain.tables.UserHasRoles.USER_HAS_ROLES;
 
     /**
      * No further instances allowed
@@ -100,8 +135,15 @@ public class TsdSrrs extends SchemaImpl {
             Categories.CATEGORIES,
             Migrations.MIGRATIONS,
             PasswordResets.PASSWORD_RESETS,
+            Permissions.PERMISSIONS,
             Reservations.RESERVATIONS,
             Resources.RESOURCES,
-            User.USER);
+            Roles.ROLES,
+            RoleHasPermissions.ROLE_HAS_PERMISSIONS,
+            Staff.STAFF,
+            Students.STUDENTS,
+            Users.USERS,
+            UserHasPermissions.USER_HAS_PERMISSIONS,
+            UserHasRoles.USER_HAS_ROLES);
     }
 }

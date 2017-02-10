@@ -5,13 +5,12 @@ package com.origins.domain.tables.records;
 
 
 import com.origins.domain.tables.Migrations;
-
-import javax.annotation.Generated;
-
 import org.jooq.Field;
 import org.jooq.Record2;
 import org.jooq.Row2;
 import org.jooq.impl.TableRecordImpl;
+
+import javax.annotation.Generated;
 
 
 /**
@@ -27,7 +26,7 @@ import org.jooq.impl.TableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class MigrationsRecord extends TableRecordImpl<MigrationsRecord> implements Record2<String, Integer> {
 
-    private static final long serialVersionUID = 322576251;
+    private static final long serialVersionUID = -294668743;
 
     /**
      * Setter for <code>tsd_srrs.migrations.migration</code>.

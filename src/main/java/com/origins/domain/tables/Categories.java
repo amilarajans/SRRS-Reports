@@ -7,21 +7,14 @@ package com.origins.domain.tables;
 import com.origins.domain.Keys;
 import com.origins.domain.TsdSrrs;
 import com.origins.domain.tables.records.CategoriesRecord;
+import org.jooq.*;
+import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
+import javax.annotation.Generated;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.annotation.Generated;
-
-import org.jooq.Field;
-import org.jooq.Identity;
-import org.jooq.Schema;
-import org.jooq.Table;
-import org.jooq.TableField;
-import org.jooq.UniqueKey;
-import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
 
 /**
@@ -37,7 +30,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends TableImpl<CategoriesRecord> {
 
-    private static final long serialVersionUID = 929727120;
+    private static final long serialVersionUID = 1207791747;
 
     /**
      * The reference instance of <code>tsd_srrs.categories</code>
@@ -81,6 +74,11 @@ public class Categories extends TableImpl<CategoriesRecord> {
      * The column <code>tsd_srrs.categories.icon</code>.
      */
     public final TableField<CategoriesRecord, String> ICON = createField("icon", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
+
+    /**
+     * The column <code>tsd_srrs.categories.color</code>.
+     */
+    public final TableField<CategoriesRecord, String> COLOR = createField("color", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
      * Create a <code>tsd_srrs.categories</code> table reference

@@ -31,7 +31,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ResourcesRecord extends UpdatableRecordImpl<ResourcesRecord> implements Record7<UInteger, UInteger, String, String, String, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = -1584999377;
+    private static final long serialVersionUID = 447627953;
 
     /**
      * Setter for <code>tsd_srrs.resources.id</code>.

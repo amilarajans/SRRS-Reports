@@ -29,7 +29,7 @@ import org.jooq.impl.TableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PasswordResetsRecord extends TableRecordImpl<PasswordResetsRecord> implements Record3<String, String, Timestamp> {
 
-    private static final long serialVersionUID = 1556587437;
+    private static final long serialVersionUID = -542667669;
 
     /**
      * Setter for <code>tsd_srrs.password_resets.email</code>.
