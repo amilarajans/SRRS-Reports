@@ -14,6 +14,7 @@ public class ResourcesAvailabilityExController {
     @RequestMapping("/resourcesAvailabilityEx")
     @CrossOrigin(origins = "*")
     public String welcome(final ModelMap model) {
+        model.addAttribute("searchData",null);
         return "resourcesAvailabilityEx";
     }
 
