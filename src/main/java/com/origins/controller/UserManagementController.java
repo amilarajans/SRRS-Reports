@@ -23,29 +23,34 @@ public class UserManagementController {
 
 	private DSLContext dsl;
 
+	private static final String USER = "users";
+	private Integer userId;
+
 	public UserManagementController(DSLContext dsl) {
 		this.dsl = dsl;
 	}
 
 	@RequestMapping("/userManagement")
 	@CrossOrigin(origins = "*")
-	public String init(final ModelMap model) {
-		model.addAttribute("users", getUsers());
+	public String init(final ModelMap model, @RequestParam(value = "id") Integer id) {
+		model.addAttribute(USER, getUsers());
+		this.userId = id;
+		model.addAttribute("userId", userId);
 		model.addAttribute("searchData", new SearchData());
 		return "userManagement";
 	}
 
 	@RequestMapping(value = "/userManagement", params = {"search"})
 	@CrossOrigin(origins = "*")
-	public String search(final ModelMap model, final SearchData searchData) {
-		model.addAttribute("users", searchData(searchData));
+	public String searchUser(final ModelMap model, final SearchData searchData) {
+		model.addAttribute(USER, searchData(searchData));
 		return "userManagement";
 	}
 
 	@RequestMapping(value = "userManagement", params = {"delete"})
 	public String removeUser(final ModelMap model, final SearchData searchData, @RequestParam(value = "delete", required = false) String email) {
-		int delete = dsl.deleteFrom(USERS).where(USERS.EMAIL.equal(email)).execute();
-		model.addAttribute("users", searchData(searchData));
+		dsl.deleteFrom(USERS).where(USERS.EMAIL.equal(email)).execute();
+		model.addAttribute(USER, searchData(searchData));
 		return "/userManagement";
 	}
 
@@ -57,7 +62,7 @@ public class UserManagementController {
 		if (email != null && !email.isEmpty()) {
 			dsl.update(USERS).set(USERS.EMAIL, email).where(USERS.ID.equal(UInteger.valueOf(id))).execute();
 		}
-		model.addAttribute("users", getUsers());
+		model.addAttribute(USER, getUsers());
 		return "/userManagement";
 	}
 

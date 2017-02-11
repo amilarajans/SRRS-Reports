@@ -29,6 +29,13 @@ public class GenericDAO {
 		this.integer1 = integer1;
 	}
 
+	public GenericDAO(String value1, String value2, LocalDateTime localDateTime1, LocalDateTime localDateTime2) {
+		this.value1 = value1;
+		this.value2 = value2;
+		this.localDateTime1 = localDateTime1;
+		this.localDateTime2 = localDateTime2;
+	}
+
 	public String getValue1() {
 		return value1;
 	}

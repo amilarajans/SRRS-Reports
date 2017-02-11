@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" href="../../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../../css/font-awesome.min.css"/>
 
 </head>
 <body>
@@ -14,36 +16,25 @@
     <div class="starter-template">
         <h1>Passed Reservations Report</h1>
 
-        <form action="#" th:action="@{/passedReservations}" th:object="${searchData}" method="post" class="form-horizontal">
+        <form action="#" th:action="@{/resourcesAvailabilityIn}" th:object="${searchData}" method="post"
+              class="form-horizontal">
             <div class="form-group">
                 <label for="idx1" class="col-sm-3 control-label">Resource</label>
                 <div class="col-sm-4">
-                    <select id="idx1" class="form-control"  th:field="*{resource}">
+                    <select id="idx1" class="form-control" th:field="*{resource}">
                         <option th:each="type : ${allResource}" th:value="${type.key}" th:text="${type.value}"></option>
                     </select>
                 </div>
+            </div>
 
-            </div>
             <div class="form-group">
-                <label for="idx2" class="col-sm-3 control-label">User</label>
+                <label for="idx2" class="col-sm-3 control-label">Reservation Date</label>
                 <div class="col-sm-4">
-                    <input disabled="true" type="text" id="idx2" class="form-control" th:field="*{user}"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="idx4" class="col-sm-3 control-label">Reservation Start Date</label>
-                <div class="col-sm-4">
-                    <input type="text" id="idx4" class="form-control" th:field="*{startDate}"/>
+                    <input type="text" id="idx2" class="form-control" th:field="*{startDate}"/>
                 </div>
                 (<span th:text="#{date.format}">YYYY/MM/DD</span>)
             </div>
-            <div class="form-group">
-                <label for="idx5" class="col-sm-3 control-label">Reservation End Date</label>
-                <div class="col-sm-4">
-                    <input type="text" id="idx5" class="form-control" th:field="*{endDate}"/>
-                </div>
-                (<span th:text="#{date.format}">YYYY/MM/DD</span>)
-            </div>
+
 
             <div class="form-group">
                 <div class="col-sm-3"></div>
@@ -52,32 +43,26 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="idx6" class="col-sm-3 control-label">Chart Type</label>
-                <div class="col-sm-4">
-                    <div id="idx6">
-                        <div th:each="ty : *{allTypes}">
-                            <input type="radio" th:field="*{type}" th:value="${ty}" onclick="onclickme(this)"/>
-                            <label th:for="${#ids.prev('type')}" th:text="${ty}"></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </form>
 
-        <div id="chart">
-            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <div th:if="${#lists.isEmpty(data)}">
+            <h3>Resource Available</h3>
         </div>
-        <div id="table">
+
+        <div th:if="${not #lists.isEmpty(data)}" id="table">
             <table class="table table-striped">
                 <tr>
-                    <th>Date</th>
                     <th>Resource Name</th>
+                    <th>Resource Location</th>
+                    <th>Reservation Start Date</th>
+                    <th>Reservation End Date</th>
                 </tr>
-                <th:block th:each="yr : ${days}">
+                <th:block th:each="dt : ${data}">
                     <tr>
-                        <td th:text="${yr}"></td>
+                        <td th:text="${dt.value1}"></td>
+                        <td th:text="${dt.value2}"></td>
+                        <td th:text="${dt.localDateTime1}"></td>
+                        <td th:text="${dt.localDateTime2}"></td>
                     </tr>
                 </th:block>
             </table>
@@ -88,59 +73,17 @@
 <!-- /.container -->
 <script th:src="@{/js/jquery.min.js}" src="../../js/jquery.min.js"></script>
 <script th:src="@{/js/bootstrap.min.js}" src="../../js/bootstrap.min.js"></script>
-<script th:src="@{/js/highcharts.js}" src="../../js/highcharts.js"></script>
+<script th:src="@{/js/moment-with-locales.min.js}" src="../../js/moment-with-locales.min.js"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}" src="../../js/bootstrap-datepicker.min.js"></script>
 
 <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
-    Highcharts.chart('container', {
-        chart: {
-            type: 'area'
-        },
-        title: {
-            text: 'Past resource utilisation'
-        },
-        xAxis: {
-            categories: [[${days}]],
-            title: {
-                enabled: false
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Reservations'
-            }
-        },
-        tooltip: {
-            split: true
-        },
-        plotOptions: {
-            area: {
-                stacking: 'normal',
-                lineColor: '#666666',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#666666'
-                }
-            }
-        },
-        series: [[${data}]]
-    });
-
-    function onclickme(elm) {
-        var test = $(elm).val();
-
-        if (test == 'Chart') {
-            $("#table").hide();
-            $("#chart").show();
-        } else {
-            $("#table").show();
-            $("#chart").hide();
-        }
-    }
-
     $(document).ready(function () {
-        $("#type1").trigger("click");
+
+	    $('#idx2').datepicker({
+		    format: 'dd-mm-yyyy'
+	    });
+
     });
     /*]]>*/
 </script>

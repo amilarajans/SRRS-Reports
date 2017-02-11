@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" href="../../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../../css/font-awesome.min.css"/>
 
 </head>
 <body>
@@ -61,10 +62,17 @@
         </form>
 
         <div id="chart">
-            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div th:if="${#lists.isEmpty(data)}">
+                <h3>No Data Found</h3>
+            </div>
+            <div th:if="${not #lists.isEmpty(data)}" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
+
         <div id="table">
-            <table class="table table-striped">
+            <div th:if="${#lists.isEmpty(users)}">
+                <h3>No Data Found</h3>
+            </div>
+            <table th:if="${not #lists.isEmpty(users)}" class="table table-striped">
                 <tr>
                     <th>Start Date</th>
                     <th>End Date</th>
