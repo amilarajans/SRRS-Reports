@@ -51,7 +51,7 @@ public class UserManagementController {
 	public String removeUser(final ModelMap model, final SearchData searchData, @RequestParam(value = "delete", required = false) String email) {
 		dsl.deleteFrom(USERS).where(USERS.EMAIL.equal(email)).execute();
 		model.addAttribute(USER, searchData(searchData));
-		return "/userManagement";
+		return "userManagement";
 	}
 
 	@RequestMapping(value = "userManagement", params = {"update"})
@@ -63,7 +63,7 @@ public class UserManagementController {
 			dsl.update(USERS).set(USERS.EMAIL, email).where(USERS.ID.equal(UInteger.valueOf(id))).execute();
 		}
 		model.addAttribute(USER, getUsers());
-		return "/userManagement";
+		return "userManagement";
 	}
 
 	protected Result<UsersRecord> searchData(SearchData searchData) {

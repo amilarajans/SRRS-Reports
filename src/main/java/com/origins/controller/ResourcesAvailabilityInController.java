@@ -54,7 +54,7 @@ public class ResourcesAvailabilityInController {
 
 		model.addAttribute("searchData", new SearchData());
 
-		return "/resourcesAvailabilityIn";
+		return "resourcesAvailabilityIn";
 	}
 
 	@RequestMapping(value = "/resourcesAvailabilityIn", params = "search")
@@ -86,7 +86,7 @@ public class ResourcesAvailabilityInController {
 
 		model.addAttribute("data", data);
 
-		return "/resourcesAvailabilityIn";
+		return "resourcesAvailabilityIn";
 	}
 
 }
