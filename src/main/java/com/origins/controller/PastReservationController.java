@@ -9,6 +9,8 @@ import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.types.UInteger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,6 +35,8 @@ import static org.jooq.impl.DSL.trueCondition;
 @Controller
 public class PastReservationController {
 
+	private final Logger logger=LoggerFactory.getLogger(PastReservationController.class);
+
 	private DSLContext dsl;
 	private DateUtil dateUtil;
 
@@ -49,17 +53,6 @@ public class PastReservationController {
 				.stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
 		return keyValues;
 	}
-
-/*
-    @ModelAttribute("allUsers")
-    public List<KeyValue<Integer>> allUsers() {
-        List<KeyValue<Integer>> keyValues = new ArrayList<>();
-        keyValues.add(new KeyValue(-1, "All"));
-        dsl.selectFrom(Users.USERS).fetch()
-                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
-        return keyValues;
-    }
-*/
 
 	@RequestMapping("/passedReservations")
 	public String init(final ModelMap modelMap) {
@@ -99,7 +92,7 @@ public class PastReservationController {
 				.groupBy(RESERVATIONS.RESOURCE_ID, RESERVATIONS.START, RESERVATIONS.END)
 				.fetch();
 
-		System.out.println(fetch);
+		logger.info(fetch.toString());
 		final List<Map> mapList = new ArrayList<>();
 
 		//|id|resource_id|user_id|name|address|nic_number|conact_number|email_address|start|end|created_at|updated_at|id|category_id|name|location|description|created_at|updated_at|
@@ -112,12 +105,12 @@ public class PastReservationController {
 			LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
 			LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
 
-			dataList.add(new GenericDAO(i.getValue(RESOURCES.NAME), i.getValue(RESOURCES.LOCATION), startDateTime, endDateTime, ((Integer) i.getValue(0))));
+			dataList.add(new GenericDAO(i.getValue(RESOURCES.NAME), i.getValue(RESOURCES.LOCATION), startDateTime, endDateTime, (Integer) i.getValue(0)));
 
 			daysList.stream().forEach(day -> {
 				LocalDateTime dateTime = day.toLocalDate().atTime(0, 0, 0, 0);
 				if (startDateTime.equals(dateTime) || endDateTime.equals(dateTime) || (startDateTime.isBefore(dateTime) && endDateTime.isAfter(dateTime))) {
-					data.add(((Integer) i.getValue(0)));
+					data.add((Integer) i.getValue(0));
 				} else {
 					data.add(0);
 				}

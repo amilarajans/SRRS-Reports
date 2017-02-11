@@ -110,7 +110,7 @@ public class TsdSrrs extends SchemaImpl {
      * No further instances allowed
      */
     private TsdSrrs() {
-        super("heroku_c21939b1ce2dfd5", null);
+        super("srrs_tsd", null);
     }
 
 
