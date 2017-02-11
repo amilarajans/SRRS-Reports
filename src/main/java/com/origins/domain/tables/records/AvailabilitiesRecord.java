@@ -5,17 +5,15 @@ package com.origins.domain.tables.records;
 
 
 import com.origins.domain.tables.Availabilities;
-
-import java.sql.Timestamp;
-
-import javax.annotation.Generated;
-
 import org.jooq.Field;
 import org.jooq.Record1;
 import org.jooq.Record6;
 import org.jooq.Row6;
 import org.jooq.impl.UpdatableRecordImpl;
 import org.jooq.types.UInteger;
+
+import javax.annotation.Generated;
+import java.sql.Timestamp;
 
 
 /**
@@ -31,87 +29,87 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AvailabilitiesRecord extends UpdatableRecordImpl<AvailabilitiesRecord> implements Record6<UInteger, UInteger, Timestamp, Timestamp, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = -90526590;
+    private static final long serialVersionUID = -1884957926;
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.id</code>.
+     * Setter for <code>srrs_tsd.availabilities.id</code>.
      */
     public void setId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.id</code>.
+     * Getter for <code>srrs_tsd.availabilities.id</code>.
      */
     public UInteger getId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.resource_id</code>.
+     * Setter for <code>srrs_tsd.availabilities.resource_id</code>.
      */
     public void setResourceId(UInteger value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.resource_id</code>.
+     * Getter for <code>srrs_tsd.availabilities.resource_id</code>.
      */
     public UInteger getResourceId() {
         return (UInteger) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.start</code>.
+     * Setter for <code>srrs_tsd.availabilities.start</code>.
      */
     public void setStart(Timestamp value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.start</code>.
+     * Getter for <code>srrs_tsd.availabilities.start</code>.
      */
     public Timestamp getStart() {
         return (Timestamp) get(2);
     }
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.end</code>.
+     * Setter for <code>srrs_tsd.availabilities.end</code>.
      */
     public void setEnd(Timestamp value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.end</code>.
+     * Getter for <code>srrs_tsd.availabilities.end</code>.
      */
     public Timestamp getEnd() {
         return (Timestamp) get(3);
     }
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.created_at</code>.
+     * Setter for <code>srrs_tsd.availabilities.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.created_at</code>.
+     * Getter for <code>srrs_tsd.availabilities.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(4);
     }
 
     /**
-     * Setter for <code>tsd_srrs.availabilities.updated_at</code>.
+     * Setter for <code>srrs_tsd.availabilities.updated_at</code>.
      */
     public void setUpdatedAt(Timestamp value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.availabilities.updated_at</code>.
+     * Getter for <code>srrs_tsd.availabilities.updated_at</code>.
      */
     public Timestamp getUpdatedAt() {
         return (Timestamp) get(5);

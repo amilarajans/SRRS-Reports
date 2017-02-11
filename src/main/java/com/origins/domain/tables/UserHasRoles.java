@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.UserHasRolesRecord;
 
 import java.util.Arrays;
@@ -36,10 +36,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserHasRoles extends TableImpl<UserHasRolesRecord> {
 
-    private static final long serialVersionUID = 238263552;
+    private static final long serialVersionUID = -599574184;
 
     /**
-     * The reference instance of <code>tsd_srrs.user_has_roles</code>
+     * The reference instance of <code>srrs_tsd.user_has_roles</code>
      */
     public static final UserHasRoles USER_HAS_ROLES = new UserHasRoles();
 
@@ -52,24 +52,24 @@ public class UserHasRoles extends TableImpl<UserHasRolesRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.user_has_roles.role_id</code>.
+     * The column <code>srrs_tsd.user_has_roles.role_id</code>.
      */
     public final TableField<UserHasRolesRecord, UInteger> ROLE_ID = createField("role_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.user_has_roles.user_id</code>.
+     * The column <code>srrs_tsd.user_has_roles.user_id</code>.
      */
     public final TableField<UserHasRolesRecord, UInteger> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * Create a <code>tsd_srrs.user_has_roles</code> table reference
+     * Create a <code>srrs_tsd.user_has_roles</code> table reference
      */
     public UserHasRoles() {
         this("user_has_roles", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.user_has_roles</code> table reference
+     * Create an aliased <code>srrs_tsd.user_has_roles</code> table reference
      */
     public UserHasRoles(String alias) {
         this(alias, USER_HAS_ROLES);
@@ -88,7 +88,7 @@ public class UserHasRoles extends TableImpl<UserHasRolesRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

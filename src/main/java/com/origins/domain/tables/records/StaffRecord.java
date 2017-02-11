@@ -31,157 +31,157 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class StaffRecord extends UpdatableRecordImpl<StaffRecord> implements Record11<UInteger, String, UInteger, String, Timestamp, String, String, String, String, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = -1166190829;
+    private static final long serialVersionUID = -585103549;
 
     /**
-     * Setter for <code>tsd_srrs.staff.id</code>.
+     * Setter for <code>srrs_tsd.staff.id</code>.
      */
     public void setId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.id</code>.
+     * Getter for <code>srrs_tsd.staff.id</code>.
      */
     public UInteger getId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.reg_id</code>.
+     * Setter for <code>srrs_tsd.staff.reg_id</code>.
      */
     public void setRegId(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.reg_id</code>.
+     * Getter for <code>srrs_tsd.staff.reg_id</code>.
      */
     public String getRegId() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.pin</code>.
+     * Setter for <code>srrs_tsd.staff.pin</code>.
      */
     public void setPin(UInteger value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.pin</code>.
+     * Getter for <code>srrs_tsd.staff.pin</code>.
      */
     public UInteger getPin() {
         return (UInteger) get(2);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.name</code>.
+     * Setter for <code>srrs_tsd.staff.name</code>.
      */
     public void setName(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.name</code>.
+     * Getter for <code>srrs_tsd.staff.name</code>.
      */
     public String getName() {
         return (String) get(3);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.date_of_birth</code>.
+     * Setter for <code>srrs_tsd.staff.date_of_birth</code>.
      */
     public void setDateOfBirth(Timestamp value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.date_of_birth</code>.
+     * Getter for <code>srrs_tsd.staff.date_of_birth</code>.
      */
     public Timestamp getDateOfBirth() {
         return (Timestamp) get(4);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.address</code>.
+     * Setter for <code>srrs_tsd.staff.address</code>.
      */
     public void setAddress(String value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.address</code>.
+     * Getter for <code>srrs_tsd.staff.address</code>.
      */
     public String getAddress() {
         return (String) get(5);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.email_address</code>.
+     * Setter for <code>srrs_tsd.staff.email_address</code>.
      */
     public void setEmailAddress(String value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.email_address</code>.
+     * Getter for <code>srrs_tsd.staff.email_address</code>.
      */
     public String getEmailAddress() {
         return (String) get(6);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.contact_number</code>.
+     * Setter for <code>srrs_tsd.staff.contact_number</code>.
      */
     public void setContactNumber(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.contact_number</code>.
+     * Getter for <code>srrs_tsd.staff.contact_number</code>.
      */
     public String getContactNumber() {
         return (String) get(7);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.post</code>.
+     * Setter for <code>srrs_tsd.staff.post</code>.
      */
     public void setPost(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.post</code>.
+     * Getter for <code>srrs_tsd.staff.post</code>.
      */
     public String getPost() {
         return (String) get(8);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.created_at</code>.
+     * Setter for <code>srrs_tsd.staff.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.created_at</code>.
+     * Getter for <code>srrs_tsd.staff.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(9);
     }
 
     /**
-     * Setter for <code>tsd_srrs.staff.updated_at</code>.
+     * Setter for <code>srrs_tsd.staff.updated_at</code>.
      */
     public void setUpdatedAt(Timestamp value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.staff.updated_at</code>.
+     * Getter for <code>srrs_tsd.staff.updated_at</code>.
      */
     public Timestamp getUpdatedAt() {
         return (Timestamp) get(10);

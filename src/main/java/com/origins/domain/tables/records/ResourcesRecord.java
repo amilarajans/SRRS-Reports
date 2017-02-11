@@ -31,101 +31,101 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ResourcesRecord extends UpdatableRecordImpl<ResourcesRecord> implements Record7<UInteger, UInteger, String, String, String, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = 447627953;
+    private static final long serialVersionUID = -64322639;
 
     /**
-     * Setter for <code>tsd_srrs.resources.id</code>.
+     * Setter for <code>srrs_tsd.resources.id</code>.
      */
     public void setId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.id</code>.
+     * Getter for <code>srrs_tsd.resources.id</code>.
      */
     public UInteger getId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.category_id</code>.
+     * Setter for <code>srrs_tsd.resources.category_id</code>.
      */
     public void setCategoryId(UInteger value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.category_id</code>.
+     * Getter for <code>srrs_tsd.resources.category_id</code>.
      */
     public UInteger getCategoryId() {
         return (UInteger) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.name</code>.
+     * Setter for <code>srrs_tsd.resources.name</code>.
      */
     public void setName(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.name</code>.
+     * Getter for <code>srrs_tsd.resources.name</code>.
      */
     public String getName() {
         return (String) get(2);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.location</code>.
+     * Setter for <code>srrs_tsd.resources.location</code>.
      */
     public void setLocation(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.location</code>.
+     * Getter for <code>srrs_tsd.resources.location</code>.
      */
     public String getLocation() {
         return (String) get(3);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.description</code>.
+     * Setter for <code>srrs_tsd.resources.description</code>.
      */
     public void setDescription(String value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.description</code>.
+     * Getter for <code>srrs_tsd.resources.description</code>.
      */
     public String getDescription() {
         return (String) get(4);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.created_at</code>.
+     * Setter for <code>srrs_tsd.resources.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.created_at</code>.
+     * Getter for <code>srrs_tsd.resources.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(5);
     }
 
     /**
-     * Setter for <code>tsd_srrs.resources.updated_at</code>.
+     * Setter for <code>srrs_tsd.resources.updated_at</code>.
      */
     public void setUpdatedAt(Timestamp value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.resources.updated_at</code>.
+     * Getter for <code>srrs_tsd.resources.updated_at</code>.
      */
     public Timestamp getUpdatedAt() {
         return (Timestamp) get(6);

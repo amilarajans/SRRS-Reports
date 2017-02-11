@@ -5,16 +5,23 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.CategoriesRecord;
-import org.jooq.*;
-import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
-import javax.annotation.Generated;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Generated;
+
+import org.jooq.Field;
+import org.jooq.Identity;
+import org.jooq.Schema;
+import org.jooq.Table;
+import org.jooq.TableField;
+import org.jooq.UniqueKey;
+import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
 
 /**
@@ -30,10 +37,10 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Categories extends TableImpl<CategoriesRecord> {
 
-    private static final long serialVersionUID = 1207791747;
+    private static final long serialVersionUID = 1797319487;
 
     /**
-     * The reference instance of <code>tsd_srrs.categories</code>
+     * The reference instance of <code>srrs_tsd.categories</code>
      */
     public static final Categories CATEGORIES = new Categories();
 
@@ -46,49 +53,49 @@ public class Categories extends TableImpl<CategoriesRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.categories.id</code>.
+     * The column <code>srrs_tsd.categories.id</code>.
      */
     public final TableField<CategoriesRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.name</code>.
+     * The column <code>srrs_tsd.categories.name</code>.
      */
     public final TableField<CategoriesRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.description</code>.
+     * The column <code>srrs_tsd.categories.description</code>.
      */
     public final TableField<CategoriesRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.created_at</code>.
+     * The column <code>srrs_tsd.categories.created_at</code>.
      */
     public final TableField<CategoriesRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.updated_at</code>.
+     * The column <code>srrs_tsd.categories.updated_at</code>.
      */
     public final TableField<CategoriesRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.icon</code>.
+     * The column <code>srrs_tsd.categories.icon</code>.
      */
     public final TableField<CategoriesRecord, String> ICON = createField("icon", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.categories.color</code>.
+     * The column <code>srrs_tsd.categories.color</code>.
      */
     public final TableField<CategoriesRecord, String> COLOR = createField("color", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * Create a <code>tsd_srrs.categories</code> table reference
+     * Create a <code>srrs_tsd.categories</code> table reference
      */
     public Categories() {
         this("categories", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.categories</code> table reference
+     * Create an aliased <code>srrs_tsd.categories</code> table reference
      */
     public Categories(String alias) {
         this(alias, CATEGORIES);
@@ -107,7 +114,7 @@ public class Categories extends TableImpl<CategoriesRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

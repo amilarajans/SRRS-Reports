@@ -5,16 +5,23 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.UsersRecord;
-import org.jooq.*;
-import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
-import javax.annotation.Generated;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Generated;
+
+import org.jooq.Field;
+import org.jooq.Identity;
+import org.jooq.Schema;
+import org.jooq.Table;
+import org.jooq.TableField;
+import org.jooq.UniqueKey;
+import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
 
 /**
@@ -30,10 +37,10 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users extends TableImpl<UsersRecord> {
 
-    private static final long serialVersionUID = -1032449432;
+    private static final long serialVersionUID = 330603910;
 
     /**
-     * The reference instance of <code>tsd_srrs.users</code>
+     * The reference instance of <code>srrs_tsd.users</code>
      */
     public static final Users USERS = new Users();
 
@@ -46,64 +53,59 @@ public class Users extends TableImpl<UsersRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.users.id</code>.
+     * The column <code>srrs_tsd.users.id</code>.
      */
     public final TableField<UsersRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.name</code>.
+     * The column <code>srrs_tsd.users.name</code>.
      */
     public final TableField<UsersRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.email</code>.
+     * The column <code>srrs_tsd.users.email</code>.
      */
     public final TableField<UsersRecord, String> EMAIL = createField("email", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.password</code>.
+     * The column <code>srrs_tsd.users.password</code>.
      */
     public final TableField<UsersRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.role</code>.
-     */
-    public final TableField<UsersRecord, String> ROLE = createField("role", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
-
-    /**
-     * The column <code>tsd_srrs.users.status</code>.
+     * The column <code>srrs_tsd.users.status</code>.
      */
     public final TableField<UsersRecord, UInteger> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.activation_key</code>.
+     * The column <code>srrs_tsd.users.activation_key</code>.
      */
     public final TableField<UsersRecord, String> ACTIVATION_KEY = createField("activation_key", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.remember_token</code>.
+     * The column <code>srrs_tsd.users.remember_token</code>.
      */
     public final TableField<UsersRecord, String> REMEMBER_TOKEN = createField("remember_token", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
 
     /**
-     * The column <code>tsd_srrs.users.created_at</code>.
+     * The column <code>srrs_tsd.users.created_at</code>.
      */
     public final TableField<UsersRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.users.updated_at</code>.
+     * The column <code>srrs_tsd.users.updated_at</code>.
      */
     public final TableField<UsersRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.users</code> table reference
+     * Create a <code>srrs_tsd.users</code> table reference
      */
     public Users() {
         this("users", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.users</code> table reference
+     * Create an aliased <code>srrs_tsd.users</code> table reference
      */
     public Users(String alias) {
         this(alias, USERS);
@@ -122,7 +124,7 @@ public class Users extends TableImpl<UsersRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

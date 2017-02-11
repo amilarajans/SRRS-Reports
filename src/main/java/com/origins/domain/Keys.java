@@ -4,19 +4,42 @@
 package com.origins.domain;
 
 
-import com.origins.domain.tables.*;
-import com.origins.domain.tables.records.*;
+import com.origins.domain.tables.Availabilities;
+import com.origins.domain.tables.Categories;
+import com.origins.domain.tables.Permissions;
+import com.origins.domain.tables.Reservations;
+import com.origins.domain.tables.Resources;
+import com.origins.domain.tables.RoleHasPermissions;
+import com.origins.domain.tables.Roles;
+import com.origins.domain.tables.Staff;
+import com.origins.domain.tables.Students;
+import com.origins.domain.tables.UserHasPermissions;
+import com.origins.domain.tables.UserHasRoles;
+import com.origins.domain.tables.Users;
+import com.origins.domain.tables.records.AvailabilitiesRecord;
+import com.origins.domain.tables.records.CategoriesRecord;
+import com.origins.domain.tables.records.PermissionsRecord;
+import com.origins.domain.tables.records.ReservationsRecord;
+import com.origins.domain.tables.records.ResourcesRecord;
+import com.origins.domain.tables.records.RoleHasPermissionsRecord;
+import com.origins.domain.tables.records.RolesRecord;
+import com.origins.domain.tables.records.StaffRecord;
+import com.origins.domain.tables.records.StudentsRecord;
+import com.origins.domain.tables.records.UserHasPermissionsRecord;
+import com.origins.domain.tables.records.UserHasRolesRecord;
+import com.origins.domain.tables.records.UsersRecord;
+
+import javax.annotation.Generated;
+
 import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 import org.jooq.types.UInteger;
 
-import javax.annotation.Generated;
-
 
 /**
- * A class modelling foreign key relationships between tables of the <code>tsd_srrs</code> 
+ * A class modelling foreign key relationships between tables of the <code>srrs_tsd</code> 
  * schema
  */
 @Generated(

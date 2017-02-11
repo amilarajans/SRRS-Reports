@@ -31,101 +31,101 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CategoriesRecord extends UpdatableRecordImpl<CategoriesRecord> implements Record7<UInteger, String, String, Timestamp, Timestamp, String, String> {
 
-    private static final long serialVersionUID = -618070599;
+    private static final long serialVersionUID = -1703814983;
 
     /**
-     * Setter for <code>tsd_srrs.categories.id</code>.
+     * Setter for <code>srrs_tsd.categories.id</code>.
      */
     public void setId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.id</code>.
+     * Getter for <code>srrs_tsd.categories.id</code>.
      */
     public UInteger getId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.name</code>.
+     * Setter for <code>srrs_tsd.categories.name</code>.
      */
     public void setName(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.name</code>.
+     * Getter for <code>srrs_tsd.categories.name</code>.
      */
     public String getName() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.description</code>.
+     * Setter for <code>srrs_tsd.categories.description</code>.
      */
     public void setDescription(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.description</code>.
+     * Getter for <code>srrs_tsd.categories.description</code>.
      */
     public String getDescription() {
         return (String) get(2);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.created_at</code>.
+     * Setter for <code>srrs_tsd.categories.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.created_at</code>.
+     * Getter for <code>srrs_tsd.categories.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(3);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.updated_at</code>.
+     * Setter for <code>srrs_tsd.categories.updated_at</code>.
      */
     public void setUpdatedAt(Timestamp value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.updated_at</code>.
+     * Getter for <code>srrs_tsd.categories.updated_at</code>.
      */
     public Timestamp getUpdatedAt() {
         return (Timestamp) get(4);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.icon</code>.
+     * Setter for <code>srrs_tsd.categories.icon</code>.
      */
     public void setIcon(String value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.icon</code>.
+     * Getter for <code>srrs_tsd.categories.icon</code>.
      */
     public String getIcon() {
         return (String) get(5);
     }
 
     /**
-     * Setter for <code>tsd_srrs.categories.color</code>.
+     * Setter for <code>srrs_tsd.categories.color</code>.
      */
     public void setColor(String value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.categories.color</code>.
+     * Getter for <code>srrs_tsd.categories.color</code>.
      */
     public String getColor() {
         return (String) get(6);

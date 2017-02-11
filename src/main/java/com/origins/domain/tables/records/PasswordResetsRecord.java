@@ -29,45 +29,45 @@ import org.jooq.impl.TableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PasswordResetsRecord extends TableRecordImpl<PasswordResetsRecord> implements Record3<String, String, Timestamp> {
 
-    private static final long serialVersionUID = -542667669;
+    private static final long serialVersionUID = -1018024061;
 
     /**
-     * Setter for <code>tsd_srrs.password_resets.email</code>.
+     * Setter for <code>srrs_tsd.password_resets.email</code>.
      */
     public void setEmail(String value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.password_resets.email</code>.
+     * Getter for <code>srrs_tsd.password_resets.email</code>.
      */
     public String getEmail() {
         return (String) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.password_resets.token</code>.
+     * Setter for <code>srrs_tsd.password_resets.token</code>.
      */
     public void setToken(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.password_resets.token</code>.
+     * Getter for <code>srrs_tsd.password_resets.token</code>.
      */
     public String getToken() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.password_resets.created_at</code>.
+     * Setter for <code>srrs_tsd.password_resets.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.password_resets.created_at</code>.
+     * Getter for <code>srrs_tsd.password_resets.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(2);

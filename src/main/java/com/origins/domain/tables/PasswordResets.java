@@ -4,7 +4,7 @@
 package com.origins.domain.tables;
 
 
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.PasswordResetsRecord;
 
 import java.sql.Timestamp;
@@ -31,10 +31,10 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PasswordResets extends TableImpl<PasswordResetsRecord> {
 
-    private static final long serialVersionUID = 775551836;
+    private static final long serialVersionUID = 477960628;
 
     /**
-     * The reference instance of <code>tsd_srrs.password_resets</code>
+     * The reference instance of <code>srrs_tsd.password_resets</code>
      */
     public static final PasswordResets PASSWORD_RESETS = new PasswordResets();
 
@@ -47,29 +47,29 @@ public class PasswordResets extends TableImpl<PasswordResetsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.password_resets.email</code>.
+     * The column <code>srrs_tsd.password_resets.email</code>.
      */
     public final TableField<PasswordResetsRecord, String> EMAIL = createField("email", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.password_resets.token</code>.
+     * The column <code>srrs_tsd.password_resets.token</code>.
      */
     public final TableField<PasswordResetsRecord, String> TOKEN = createField("token", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.password_resets.created_at</code>.
+     * The column <code>srrs_tsd.password_resets.created_at</code>.
      */
     public final TableField<PasswordResetsRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
-     * Create a <code>tsd_srrs.password_resets</code> table reference
+     * Create a <code>srrs_tsd.password_resets</code> table reference
      */
     public PasswordResets() {
         this("password_resets", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.password_resets</code> table reference
+     * Create an aliased <code>srrs_tsd.password_resets</code> table reference
      */
     public PasswordResets(String alias) {
         this(alias, PASSWORD_RESETS);
@@ -88,7 +88,7 @@ public class PasswordResets extends TableImpl<PasswordResetsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

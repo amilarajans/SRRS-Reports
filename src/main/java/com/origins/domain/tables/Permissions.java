@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.PermissionsRecord;
 
 import java.sql.Timestamp;
@@ -37,10 +37,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Permissions extends TableImpl<PermissionsRecord> {
 
-    private static final long serialVersionUID = 1543684984;
+    private static final long serialVersionUID = 916375656;
 
     /**
-     * The reference instance of <code>tsd_srrs.permissions</code>
+     * The reference instance of <code>srrs_tsd.permissions</code>
      */
     public static final Permissions PERMISSIONS = new Permissions();
 
@@ -53,34 +53,34 @@ public class Permissions extends TableImpl<PermissionsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.permissions.id</code>.
+     * The column <code>srrs_tsd.permissions.id</code>.
      */
     public final TableField<PermissionsRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.permissions.name</code>.
+     * The column <code>srrs_tsd.permissions.name</code>.
      */
     public final TableField<PermissionsRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.permissions.created_at</code>.
+     * The column <code>srrs_tsd.permissions.created_at</code>.
      */
     public final TableField<PermissionsRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.permissions.updated_at</code>.
+     * The column <code>srrs_tsd.permissions.updated_at</code>.
      */
     public final TableField<PermissionsRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.permissions</code> table reference
+     * Create a <code>srrs_tsd.permissions</code> table reference
      */
     public Permissions() {
         this("permissions", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.permissions</code> table reference
+     * Create an aliased <code>srrs_tsd.permissions</code> table reference
      */
     public Permissions(String alias) {
         this(alias, PERMISSIONS);
@@ -99,7 +99,7 @@ public class Permissions extends TableImpl<PermissionsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.StudentsRecord;
 
 import java.sql.Timestamp;
@@ -37,10 +37,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Students extends TableImpl<StudentsRecord> {
 
-    private static final long serialVersionUID = 760613375;
+    private static final long serialVersionUID = -271087453;
 
     /**
-     * The reference instance of <code>tsd_srrs.students</code>
+     * The reference instance of <code>srrs_tsd.students</code>
      */
     public static final Students STUDENTS = new Students();
 
@@ -53,69 +53,69 @@ public class Students extends TableImpl<StudentsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.students.id</code>.
+     * The column <code>srrs_tsd.students.id</code>.
      */
     public final TableField<StudentsRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.reg_id</code>.
+     * The column <code>srrs_tsd.students.reg_id</code>.
      */
     public final TableField<StudentsRecord, String> REG_ID = createField("reg_id", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.pin</code>.
+     * The column <code>srrs_tsd.students.pin</code>.
      */
     public final TableField<StudentsRecord, UInteger> PIN = createField("pin", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.name</code>.
+     * The column <code>srrs_tsd.students.name</code>.
      */
     public final TableField<StudentsRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.date_of_birth</code>.
+     * The column <code>srrs_tsd.students.date_of_birth</code>.
      */
     public final TableField<StudentsRecord, Timestamp> DATE_OF_BIRTH = createField("date_of_birth", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.address</code>.
+     * The column <code>srrs_tsd.students.address</code>.
      */
     public final TableField<StudentsRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.email_address</code>.
+     * The column <code>srrs_tsd.students.email_address</code>.
      */
     public final TableField<StudentsRecord, String> EMAIL_ADDRESS = createField("email_address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.contact_number</code>.
+     * The column <code>srrs_tsd.students.contact_number</code>.
      */
     public final TableField<StudentsRecord, String> CONTACT_NUMBER = createField("contact_number", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.class</code>.
+     * The column <code>srrs_tsd.students.class</code>.
      */
     public final TableField<StudentsRecord, String> CLASS = createField("class", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.students.created_at</code>.
+     * The column <code>srrs_tsd.students.created_at</code>.
      */
     public final TableField<StudentsRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.students.updated_at</code>.
+     * The column <code>srrs_tsd.students.updated_at</code>.
      */
     public final TableField<StudentsRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.students</code> table reference
+     * Create a <code>srrs_tsd.students</code> table reference
      */
     public Students() {
         this("students", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.students</code> table reference
+     * Create an aliased <code>srrs_tsd.students</code> table reference
      */
     public Students(String alias) {
         this(alias, STUDENTS);
@@ -134,7 +134,7 @@ public class Students extends TableImpl<StudentsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

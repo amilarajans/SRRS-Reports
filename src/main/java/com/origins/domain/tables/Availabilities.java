@@ -5,16 +5,24 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.AvailabilitiesRecord;
-import org.jooq.*;
-import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
-import javax.annotation.Generated;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Generated;
+
+import org.jooq.Field;
+import org.jooq.ForeignKey;
+import org.jooq.Identity;
+import org.jooq.Schema;
+import org.jooq.Table;
+import org.jooq.TableField;
+import org.jooq.UniqueKey;
+import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
 
 /**
@@ -30,10 +38,10 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Availabilities extends TableImpl<AvailabilitiesRecord> {
 
-    private static final long serialVersionUID = -971722558;
+    private static final long serialVersionUID = 1273834242;
 
     /**
-     * The reference instance of <code>tsd_srrs.availabilities</code>
+     * The reference instance of <code>srrs_tsd.availabilities</code>
      */
     public static final Availabilities AVAILABILITIES = new Availabilities();
 
@@ -46,44 +54,44 @@ public class Availabilities extends TableImpl<AvailabilitiesRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.availabilities.id</code>.
+     * The column <code>srrs_tsd.availabilities.id</code>.
      */
     public final TableField<AvailabilitiesRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.availabilities.resource_id</code>.
+     * The column <code>srrs_tsd.availabilities.resource_id</code>.
      */
     public final TableField<AvailabilitiesRecord, UInteger> RESOURCE_ID = createField("resource_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.availabilities.start</code>.
+     * The column <code>srrs_tsd.availabilities.start</code>.
      */
     public final TableField<AvailabilitiesRecord, Timestamp> START = createField("start", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.availabilities.end</code>.
+     * The column <code>srrs_tsd.availabilities.end</code>.
      */
     public final TableField<AvailabilitiesRecord, Timestamp> END = createField("end", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.availabilities.created_at</code>.
+     * The column <code>srrs_tsd.availabilities.created_at</code>.
      */
     public final TableField<AvailabilitiesRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.availabilities.updated_at</code>.
+     * The column <code>srrs_tsd.availabilities.updated_at</code>.
      */
     public final TableField<AvailabilitiesRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.availabilities</code> table reference
+     * Create a <code>srrs_tsd.availabilities</code> table reference
      */
     public Availabilities() {
         this("availabilities", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.availabilities</code> table reference
+     * Create an aliased <code>srrs_tsd.availabilities</code> table reference
      */
     public Availabilities(String alias) {
         this(alias, AVAILABILITIES);
@@ -102,7 +110,7 @@ public class Availabilities extends TableImpl<AvailabilitiesRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

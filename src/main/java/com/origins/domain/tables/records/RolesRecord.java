@@ -31,59 +31,59 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RolesRecord extends UpdatableRecordImpl<RolesRecord> implements Record4<UInteger, String, Timestamp, Timestamp> {
 
-    private static final long serialVersionUID = -1872645773;
+    private static final long serialVersionUID = -907632349;
 
     /**
-     * Setter for <code>tsd_srrs.roles.id</code>.
+     * Setter for <code>srrs_tsd.roles.id</code>.
      */
     public void setId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.roles.id</code>.
+     * Getter for <code>srrs_tsd.roles.id</code>.
      */
     public UInteger getId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.roles.name</code>.
+     * Setter for <code>srrs_tsd.roles.name</code>.
      */
     public void setName(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.roles.name</code>.
+     * Getter for <code>srrs_tsd.roles.name</code>.
      */
     public String getName() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>tsd_srrs.roles.created_at</code>.
+     * Setter for <code>srrs_tsd.roles.created_at</code>.
      */
     public void setCreatedAt(Timestamp value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.roles.created_at</code>.
+     * Getter for <code>srrs_tsd.roles.created_at</code>.
      */
     public Timestamp getCreatedAt() {
         return (Timestamp) get(2);
     }
 
     /**
-     * Setter for <code>tsd_srrs.roles.updated_at</code>.
+     * Setter for <code>srrs_tsd.roles.updated_at</code>.
      */
     public void setUpdatedAt(Timestamp value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.roles.updated_at</code>.
+     * Getter for <code>srrs_tsd.roles.updated_at</code>.
      */
     public Timestamp getUpdatedAt() {
         return (Timestamp) get(3);

@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 
 
 /**
- * Convenience access to all tables in tsd_srrs
+ * Convenience access to all tables in srrs_tsd
  */
 @Generated(
     value = {
@@ -36,72 +36,72 @@ import javax.annotation.Generated;
 public class Tables {
 
     /**
-     * The table <code>tsd_srrs.availabilities</code>.
+     * The table <code>srrs_tsd.availabilities</code>.
      */
-    public static final Availabilities AVAILABILITIES = com.origins.domain.tables.Availabilities.AVAILABILITIES;
+    public static final Availabilities AVAILABILITIES = Availabilities.AVAILABILITIES;
 
     /**
-     * The table <code>tsd_srrs.categories</code>.
+     * The table <code>srrs_tsd.categories</code>.
      */
-    public static final Categories CATEGORIES = com.origins.domain.tables.Categories.CATEGORIES;
+    public static final Categories CATEGORIES = Categories.CATEGORIES;
 
     /**
-     * The table <code>tsd_srrs.migrations</code>.
+     * The table <code>srrs_tsd.migrations</code>.
      */
-    public static final Migrations MIGRATIONS = com.origins.domain.tables.Migrations.MIGRATIONS;
+    public static final Migrations MIGRATIONS = Migrations.MIGRATIONS;
 
     /**
-     * The table <code>tsd_srrs.password_resets</code>.
+     * The table <code>srrs_tsd.password_resets</code>.
      */
-    public static final PasswordResets PASSWORD_RESETS = com.origins.domain.tables.PasswordResets.PASSWORD_RESETS;
+    public static final PasswordResets PASSWORD_RESETS = PasswordResets.PASSWORD_RESETS;
 
     /**
-     * The table <code>tsd_srrs.permissions</code>.
+     * The table <code>srrs_tsd.permissions</code>.
      */
-    public static final Permissions PERMISSIONS = com.origins.domain.tables.Permissions.PERMISSIONS;
+    public static final Permissions PERMISSIONS = Permissions.PERMISSIONS;
 
     /**
-     * The table <code>tsd_srrs.reservations</code>.
+     * The table <code>srrs_tsd.reservations</code>.
      */
-    public static final Reservations RESERVATIONS = com.origins.domain.tables.Reservations.RESERVATIONS;
+    public static final Reservations RESERVATIONS = Reservations.RESERVATIONS;
 
     /**
-     * The table <code>tsd_srrs.resources</code>.
+     * The table <code>srrs_tsd.resources</code>.
      */
-    public static final Resources RESOURCES = com.origins.domain.tables.Resources.RESOURCES;
+    public static final Resources RESOURCES = Resources.RESOURCES;
 
     /**
-     * The table <code>tsd_srrs.roles</code>.
+     * The table <code>srrs_tsd.roles</code>.
      */
-    public static final Roles ROLES = com.origins.domain.tables.Roles.ROLES;
+    public static final Roles ROLES = Roles.ROLES;
 
     /**
-     * The table <code>tsd_srrs.role_has_permissions</code>.
+     * The table <code>srrs_tsd.role_has_permissions</code>.
      */
-    public static final RoleHasPermissions ROLE_HAS_PERMISSIONS = com.origins.domain.tables.RoleHasPermissions.ROLE_HAS_PERMISSIONS;
+    public static final RoleHasPermissions ROLE_HAS_PERMISSIONS = RoleHasPermissions.ROLE_HAS_PERMISSIONS;
 
     /**
-     * The table <code>tsd_srrs.staff</code>.
+     * The table <code>srrs_tsd.staff</code>.
      */
-    public static final Staff STAFF = com.origins.domain.tables.Staff.STAFF;
+    public static final Staff STAFF = Staff.STAFF;
 
     /**
-     * The table <code>tsd_srrs.students</code>.
+     * The table <code>srrs_tsd.students</code>.
      */
-    public static final Students STUDENTS = com.origins.domain.tables.Students.STUDENTS;
+    public static final Students STUDENTS = Students.STUDENTS;
 
     /**
-     * The table <code>tsd_srrs.users</code>.
+     * The table <code>srrs_tsd.users</code>.
      */
-    public static final Users USERS = com.origins.domain.tables.Users.USERS;
+    public static final Users USERS = Users.USERS;
 
     /**
-     * The table <code>tsd_srrs.user_has_permissions</code>.
+     * The table <code>srrs_tsd.user_has_permissions</code>.
      */
-    public static final UserHasPermissions USER_HAS_PERMISSIONS = com.origins.domain.tables.UserHasPermissions.USER_HAS_PERMISSIONS;
+    public static final UserHasPermissions USER_HAS_PERMISSIONS = UserHasPermissions.USER_HAS_PERMISSIONS;
 
     /**
-     * The table <code>tsd_srrs.user_has_roles</code>.
+     * The table <code>srrs_tsd.user_has_roles</code>.
      */
-    public static final UserHasRoles USER_HAS_ROLES = com.origins.domain.tables.UserHasRoles.USER_HAS_ROLES;
+    public static final UserHasRoles USER_HAS_ROLES = UserHasRoles.USER_HAS_ROLES;
 }

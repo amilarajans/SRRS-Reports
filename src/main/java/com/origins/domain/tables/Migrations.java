@@ -4,7 +4,7 @@
 package com.origins.domain.tables;
 
 
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.MigrationsRecord;
 
 import javax.annotation.Generated;
@@ -29,10 +29,10 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Migrations extends TableImpl<MigrationsRecord> {
 
-    private static final long serialVersionUID = -1465012896;
+    private static final long serialVersionUID = 37187540;
 
     /**
-     * The reference instance of <code>tsd_srrs.migrations</code>
+     * The reference instance of <code>srrs_tsd.migrations</code>
      */
     public static final Migrations MIGRATIONS = new Migrations();
 
@@ -45,24 +45,24 @@ public class Migrations extends TableImpl<MigrationsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.migrations.migration</code>.
+     * The column <code>srrs_tsd.migrations.migration</code>.
      */
     public final TableField<MigrationsRecord, String> MIGRATION = createField("migration", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.migrations.batch</code>.
+     * The column <code>srrs_tsd.migrations.batch</code>.
      */
     public final TableField<MigrationsRecord, Integer> BATCH = createField("batch", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * Create a <code>tsd_srrs.migrations</code> table reference
+     * Create a <code>srrs_tsd.migrations</code> table reference
      */
     public Migrations() {
         this("migrations", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.migrations</code> table reference
+     * Create an aliased <code>srrs_tsd.migrations</code> table reference
      */
     public Migrations(String alias) {
         this(alias, MIGRATIONS);
@@ -81,7 +81,7 @@ public class Migrations extends TableImpl<MigrationsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

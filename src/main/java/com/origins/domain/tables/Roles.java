@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.RolesRecord;
 
 import java.sql.Timestamp;
@@ -37,10 +37,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Roles extends TableImpl<RolesRecord> {
 
-    private static final long serialVersionUID = -1570072758;
+    private static final long serialVersionUID = -473544902;
 
     /**
-     * The reference instance of <code>tsd_srrs.roles</code>
+     * The reference instance of <code>srrs_tsd.roles</code>
      */
     public static final Roles ROLES = new Roles();
 
@@ -53,34 +53,34 @@ public class Roles extends TableImpl<RolesRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.roles.id</code>.
+     * The column <code>srrs_tsd.roles.id</code>.
      */
     public final TableField<RolesRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.roles.name</code>.
+     * The column <code>srrs_tsd.roles.name</code>.
      */
     public final TableField<RolesRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.roles.created_at</code>.
+     * The column <code>srrs_tsd.roles.created_at</code>.
      */
     public final TableField<RolesRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.roles.updated_at</code>.
+     * The column <code>srrs_tsd.roles.updated_at</code>.
      */
     public final TableField<RolesRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.roles</code> table reference
+     * Create a <code>srrs_tsd.roles</code> table reference
      */
     public Roles() {
         this("roles", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.roles</code> table reference
+     * Create an aliased <code>srrs_tsd.roles</code> table reference
      */
     public Roles(String alias) {
         this(alias, ROLES);
@@ -99,7 +99,7 @@ public class Roles extends TableImpl<RolesRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

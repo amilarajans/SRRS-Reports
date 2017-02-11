@@ -28,31 +28,31 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserHasRolesRecord extends UpdatableRecordImpl<UserHasRolesRecord> implements Record2<UInteger, UInteger> {
 
-    private static final long serialVersionUID = -873048658;
+    private static final long serialVersionUID = -577795026;
 
     /**
-     * Setter for <code>tsd_srrs.user_has_roles.role_id</code>.
+     * Setter for <code>srrs_tsd.user_has_roles.role_id</code>.
      */
     public void setRoleId(UInteger value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.user_has_roles.role_id</code>.
+     * Getter for <code>srrs_tsd.user_has_roles.role_id</code>.
      */
     public UInteger getRoleId() {
         return (UInteger) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.user_has_roles.user_id</code>.
+     * Setter for <code>srrs_tsd.user_has_roles.user_id</code>.
      */
     public void setUserId(UInteger value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.user_has_roles.user_id</code>.
+     * Getter for <code>srrs_tsd.user_has_roles.user_id</code>.
      */
     public UInteger getUserId() {
         return (UInteger) get(1);

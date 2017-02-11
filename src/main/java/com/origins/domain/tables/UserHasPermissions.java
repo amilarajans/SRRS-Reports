@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.UserHasPermissionsRecord;
 
 import java.util.Arrays;
@@ -36,10 +36,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserHasPermissions extends TableImpl<UserHasPermissionsRecord> {
 
-    private static final long serialVersionUID = 2015759824;
+    private static final long serialVersionUID = 172193832;
 
     /**
-     * The reference instance of <code>tsd_srrs.user_has_permissions</code>
+     * The reference instance of <code>srrs_tsd.user_has_permissions</code>
      */
     public static final UserHasPermissions USER_HAS_PERMISSIONS = new UserHasPermissions();
 
@@ -52,24 +52,24 @@ public class UserHasPermissions extends TableImpl<UserHasPermissionsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.user_has_permissions.user_id</code>.
+     * The column <code>srrs_tsd.user_has_permissions.user_id</code>.
      */
     public final TableField<UserHasPermissionsRecord, UInteger> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.user_has_permissions.permission_id</code>.
+     * The column <code>srrs_tsd.user_has_permissions.permission_id</code>.
      */
     public final TableField<UserHasPermissionsRecord, UInteger> PERMISSION_ID = createField("permission_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * Create a <code>tsd_srrs.user_has_permissions</code> table reference
+     * Create a <code>srrs_tsd.user_has_permissions</code> table reference
      */
     public UserHasPermissions() {
         this("user_has_permissions", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.user_has_permissions</code> table reference
+     * Create an aliased <code>srrs_tsd.user_has_permissions</code> table reference
      */
     public UserHasPermissions(String alias) {
         this(alias, USER_HAS_PERMISSIONS);
@@ -88,7 +88,7 @@ public class UserHasPermissions extends TableImpl<UserHasPermissionsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

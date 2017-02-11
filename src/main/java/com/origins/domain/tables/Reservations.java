@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.ReservationsRecord;
 
 import java.sql.Timestamp;
@@ -38,10 +38,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Reservations extends TableImpl<ReservationsRecord> {
 
-    private static final long serialVersionUID = -2091117107;
+    private static final long serialVersionUID = -1700438513;
 
     /**
-     * The reference instance of <code>tsd_srrs.reservations</code>
+     * The reference instance of <code>srrs_tsd.reservations</code>
      */
     public static final Reservations RESERVATIONS = new Reservations();
 
@@ -54,74 +54,79 @@ public class Reservations extends TableImpl<ReservationsRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.reservations.id</code>.
+     * The column <code>srrs_tsd.reservations.id</code>.
      */
     public final TableField<ReservationsRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.resource_id</code>.
+     * The column <code>srrs_tsd.reservations.resource_id</code>.
      */
     public final TableField<ReservationsRecord, UInteger> RESOURCE_ID = createField("resource_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.user_id</code>.
+     * The column <code>srrs_tsd.reservations.user_id</code>.
      */
     public final TableField<ReservationsRecord, String> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.name</code>.
+     * The column <code>srrs_tsd.reservations.purpose</code>.
+     */
+    public final TableField<ReservationsRecord, String> PURPOSE = createField("purpose", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
+
+    /**
+     * The column <code>srrs_tsd.reservations.name</code>.
      */
     public final TableField<ReservationsRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.address</code>.
+     * The column <code>srrs_tsd.reservations.address</code>.
      */
     public final TableField<ReservationsRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.nic_number</code>.
+     * The column <code>srrs_tsd.reservations.nic_number</code>.
      */
     public final TableField<ReservationsRecord, String> NIC_NUMBER = createField("nic_number", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.conact_number</code>.
+     * The column <code>srrs_tsd.reservations.conact_number</code>.
      */
     public final TableField<ReservationsRecord, String> CONACT_NUMBER = createField("conact_number", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.email_address</code>.
+     * The column <code>srrs_tsd.reservations.email_address</code>.
      */
     public final TableField<ReservationsRecord, String> EMAIL_ADDRESS = createField("email_address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.start</code>.
+     * The column <code>srrs_tsd.reservations.start</code>.
      */
     public final TableField<ReservationsRecord, Timestamp> START = createField("start", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.end</code>.
+     * The column <code>srrs_tsd.reservations.end</code>.
      */
     public final TableField<ReservationsRecord, Timestamp> END = createField("end", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.created_at</code>.
+     * The column <code>srrs_tsd.reservations.created_at</code>.
      */
     public final TableField<ReservationsRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.reservations.updated_at</code>.
+     * The column <code>srrs_tsd.reservations.updated_at</code>.
      */
     public final TableField<ReservationsRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.reservations</code> table reference
+     * Create a <code>srrs_tsd.reservations</code> table reference
      */
     public Reservations() {
         this("reservations", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.reservations</code> table reference
+     * Create an aliased <code>srrs_tsd.reservations</code> table reference
      */
     public Reservations(String alias) {
         this(alias, RESERVATIONS);
@@ -140,7 +145,7 @@ public class Reservations extends TableImpl<ReservationsRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

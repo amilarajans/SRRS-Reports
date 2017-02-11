@@ -5,7 +5,7 @@ package com.origins.domain.tables;
 
 
 import com.origins.domain.Keys;
-import com.origins.domain.TsdSrrs;
+import com.origins.domain.SrrsTsd;
 import com.origins.domain.tables.records.StaffRecord;
 
 import java.sql.Timestamp;
@@ -37,10 +37,10 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Staff extends TableImpl<StaffRecord> {
 
-    private static final long serialVersionUID = -2054841377;
+    private static final long serialVersionUID = -140908493;
 
     /**
-     * The reference instance of <code>tsd_srrs.staff</code>
+     * The reference instance of <code>srrs_tsd.staff</code>
      */
     public static final Staff STAFF = new Staff();
 
@@ -53,69 +53,69 @@ public class Staff extends TableImpl<StaffRecord> {
     }
 
     /**
-     * The column <code>tsd_srrs.staff.id</code>.
+     * The column <code>srrs_tsd.staff.id</code>.
      */
     public final TableField<StaffRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.reg_id</code>.
+     * The column <code>srrs_tsd.staff.reg_id</code>.
      */
     public final TableField<StaffRecord, String> REG_ID = createField("reg_id", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.pin</code>.
+     * The column <code>srrs_tsd.staff.pin</code>.
      */
     public final TableField<StaffRecord, UInteger> PIN = createField("pin", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.name</code>.
+     * The column <code>srrs_tsd.staff.name</code>.
      */
     public final TableField<StaffRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.date_of_birth</code>.
+     * The column <code>srrs_tsd.staff.date_of_birth</code>.
      */
     public final TableField<StaffRecord, Timestamp> DATE_OF_BIRTH = createField("date_of_birth", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.address</code>.
+     * The column <code>srrs_tsd.staff.address</code>.
      */
     public final TableField<StaffRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.email_address</code>.
+     * The column <code>srrs_tsd.staff.email_address</code>.
      */
     public final TableField<StaffRecord, String> EMAIL_ADDRESS = createField("email_address", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.contact_number</code>.
+     * The column <code>srrs_tsd.staff.contact_number</code>.
      */
     public final TableField<StaffRecord, String> CONTACT_NUMBER = createField("contact_number", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.post</code>.
+     * The column <code>srrs_tsd.staff.post</code>.
      */
     public final TableField<StaffRecord, String> POST = createField("post", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.created_at</code>.
+     * The column <code>srrs_tsd.staff.created_at</code>.
      */
     public final TableField<StaffRecord, Timestamp> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>tsd_srrs.staff.updated_at</code>.
+     * The column <code>srrs_tsd.staff.updated_at</code>.
      */
     public final TableField<StaffRecord, Timestamp> UPDATED_AT = createField("updated_at", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * Create a <code>tsd_srrs.staff</code> table reference
+     * Create a <code>srrs_tsd.staff</code> table reference
      */
     public Staff() {
         this("staff", null);
     }
 
     /**
-     * Create an aliased <code>tsd_srrs.staff</code> table reference
+     * Create an aliased <code>srrs_tsd.staff</code> table reference
      */
     public Staff(String alias) {
         this(alias, STAFF);
@@ -134,7 +134,7 @@ public class Staff extends TableImpl<StaffRecord> {
      */
     @Override
     public Schema getSchema() {
-        return TsdSrrs.TSD_SRRS;
+        return SrrsTsd.SRRS_TSD;
     }
 
     /**

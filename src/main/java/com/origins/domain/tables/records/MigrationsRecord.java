@@ -5,12 +5,13 @@ package com.origins.domain.tables.records;
 
 
 import com.origins.domain.tables.Migrations;
+
+import javax.annotation.Generated;
+
 import org.jooq.Field;
 import org.jooq.Record2;
 import org.jooq.Row2;
 import org.jooq.impl.TableRecordImpl;
-
-import javax.annotation.Generated;
 
 
 /**
@@ -26,31 +27,31 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class MigrationsRecord extends TableRecordImpl<MigrationsRecord> implements Record2<String, Integer> {
 
-    private static final long serialVersionUID = -294668743;
+    private static final long serialVersionUID = 102078625;
 
     /**
-     * Setter for <code>tsd_srrs.migrations.migration</code>.
+     * Setter for <code>srrs_tsd.migrations.migration</code>.
      */
     public void setMigration(String value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.migrations.migration</code>.
+     * Getter for <code>srrs_tsd.migrations.migration</code>.
      */
     public String getMigration() {
         return (String) get(0);
     }
 
     /**
-     * Setter for <code>tsd_srrs.migrations.batch</code>.
+     * Setter for <code>srrs_tsd.migrations.batch</code>.
      */
     public void setBatch(Integer value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>tsd_srrs.migrations.batch</code>.
+     * Getter for <code>srrs_tsd.migrations.batch</code>.
      */
     public Integer getBatch() {
         return (Integer) get(1);
