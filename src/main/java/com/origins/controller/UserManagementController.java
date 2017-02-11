@@ -24,6 +24,7 @@ public class UserManagementController {
 	private DSLContext dsl;
 
 	private static final String USER = "users";
+	private static final String USER_ID = "userId";
 	private Integer userId;
 
 	public UserManagementController(DSLContext dsl) {
@@ -35,7 +36,7 @@ public class UserManagementController {
 	public String init(final ModelMap model, @RequestParam(value = "id") Integer id) {
 		model.addAttribute(USER, getUsers());
 		this.userId = id;
-		model.addAttribute("userId", userId);
+		model.addAttribute(USER_ID, userId);
 		model.addAttribute("searchData", new SearchData());
 		return "userManagement";
 	}
@@ -44,6 +45,7 @@ public class UserManagementController {
 	@CrossOrigin(origins = "*")
 	public String searchUser(final ModelMap model, final SearchData searchData) {
 		model.addAttribute(USER, searchData(searchData));
+		model.addAttribute(USER_ID, userId);
 		return "userManagement";
 	}
 
@@ -51,6 +53,7 @@ public class UserManagementController {
 	public String removeUser(final ModelMap model, final SearchData searchData, @RequestParam(value = "delete", required = false) String email) {
 		dsl.deleteFrom(USERS).where(USERS.EMAIL.equal(email)).execute();
 		model.addAttribute(USER, searchData(searchData));
+		model.addAttribute(USER_ID, userId);
 		return "userManagement";
 	}
 
@@ -63,6 +66,7 @@ public class UserManagementController {
 			dsl.update(USERS).set(USERS.EMAIL, email).where(USERS.ID.equal(UInteger.valueOf(id))).execute();
 		}
 		model.addAttribute(USER, getUsers());
+		model.addAttribute(USER_ID, userId);
 		return "userManagement";
 	}
 

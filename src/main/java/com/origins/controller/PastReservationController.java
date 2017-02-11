@@ -95,8 +95,6 @@ public class PastReservationController {
 		logger.info(String.format("%n%s",fetch.toString()));
 		final List<Map> mapList = new ArrayList<>();
 
-		//|id|resource_id|user_id|name|address|nic_number|conact_number|email_address|start|end|created_at|updated_at|id|category_id|name|location|description|created_at|updated_at|
-		//|0 |1          |2      |3   |4      |5         |6            |7            |8    |9  |10        |11        |12|13         |14  |15      |16         |17        |18        |
 		fetch.stream().forEach(i -> {
 			Map<String, Object> map = new HashMap<>();
 			List<Integer> data = new ArrayList<>();
