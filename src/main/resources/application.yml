@@ -3,4 +3,4 @@ spring:
     username: b6aafba97c479d
     password: 219baadf
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://us-cdbr-azure-southcentral-f.cloudapp.net:3306/srrs_tsd?characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://us-cdbr-azure-southcentral-f.cloudapp.net:3306/srrs_tsd?characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull

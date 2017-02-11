@@ -14,6 +14,7 @@ public class SearchData {
 	private String type;
 	private Integer resource;
 	private String user;
+	private String email;
 	private LocalDate startDate;
 	private LocalDate endDate;
 
@@ -72,5 +73,13 @@ public class SearchData {
 
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}"
+          href="../../css/bootstrap-datepicker3.min.css"/>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="starter-template" style="margin-top: 25px;">
+
+        <form action="#" th:action="@{/userManagement}" th:object="${searchData}" method="post" class="form-horizontal">
+
+            <div class="form-group">
+                <label for="idx1" class="col-sm-3 control-label">E-mail</label>
+                <div class="col-sm-4">
+                    <input type="text" id="idx1" class="form-control" th:field="*{email}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="idx2" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-4">
+                    <input type="text" id="idx2" class="form-control" th:field="*{user}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div>
+                    <button type="submit" class="btn btn-primary" name="search">Search</button>
+                </div>
+            </div>
+
+            <div id="table" class="col-sm-12">
+                <table class="table table-striped">
+                    <tr>
+                        <th>E-Mail</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <th:block th:each="user : ${users}">
+                        <tr>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.name}"></td>
+                            <td th:text="${user.status}"></td>
+                            <td th:text="${user.createdAt}"></td>
+                            <td>
+                                <a class="btn btn-success" name="edit" data-toggle="modal" data-target="#myModal"
+                                   th:onclick="'setUserId(\''+${user.id}+'\');return false;'">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" name="delete"
+                                   th:onclick="'return confirmAction(\''+${user.name}+'\',\''+${user.email}+'\');'">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+
+        </form>
+
+
+        <!-- Modal -->
+        <div th:id="myModal" th:fragment="myModel" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" th:action="@{/userManagement}" th:method="post"
+                              class="form-horizontal">
+                            <div class="form-group">
+                                <label for="idx3" class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="idx3" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="idx4" class="col-sm-3 control-label">E-mail</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="idx4" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3"></div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                                            onclick="updateData()"
+                                            name="update">Save changes
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+<script th:src="@{/js/jquery.min.js}" src="../../js/jquery.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="../../js/bootstrap.min.js"></script>
+<script th:src="@{/js/moment-with-locales.min.js}" src="../../js/moment-with-locales.min.js"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}" src="../../js/bootstrap-datepicker.min.js"></script>
+<script th:src="@{/js/bootbox.min.js}" src="../../js/bootbox.min.js"></script>
+
+<script th:inline="javascript" type="text/javascript">
+    /*<![CDATA[*/
+
+	var userId;
+	$(document).ready(function () {
+		$("#type1").trigger("click");
+
+		$('#idx4').datepicker({
+			format: 'dd-mm-yyyy'
+		});
+
+		$('#idx5').datepicker({
+			format: 'dd-mm-yyyy'
+		});
+	});
+
+	function confirmAction(user, email) {
+		var dialog = bootbox.dialog({
+			message: '<p class="text-center">Please wait while we delete...</p>',
+			closeButton: false
+		});
+		bootbox.confirm({
+			title: "Remove User?",
+			message: "Do you want to remove user " + user + " ?",
+			buttons: {
+				cancel: {
+					label: '<i class="fa fa-times"></i> Cancel'
+				},
+				confirm: {
+					label: '<i class="fa fa-check"></i> Confirm'
+				}
+			},
+			callback: function (result) {
+				if (result) {
+					$.ajax({
+						method: "POST",
+						url: "/userManagement",
+						data: {delete: email},
+						success: function (resultData) {
+							dialog.modal('hide');
+							window.location.href = "/userManagement";
+						}
+					}).done(function (msg) {
+						dialog.modal('show');
+					});
+				}else{
+					dialog.modal('hide');
+                }
+			}
+		});
+		return false;
+	}
+	function updateData() {
+		var dialog = bootbox.dialog({
+			message: '<p class="text-center">Please wait while we update...</p>',
+			closeButton: false
+		});
+		$.ajax({
+			method: "POST",
+			url: "/userManagement",
+			data: {
+				update: '',
+				name: $('#idx3').val(),
+				email: $('#idx4').val(),
+				id: userId
+			},
+			success: function (result) {
+				dialog.modal('hide');
+				window.location.href = "/userManagement";
+			}
+		}).done(function (result) {
+			dialog.modal('show');
+		});
+	}
+
+	function setUserId(id) {
+		userId = id;
+	}
+    /*]]>*/
+</script>
+
+</body>
+</html>
