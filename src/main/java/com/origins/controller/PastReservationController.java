@@ -92,7 +92,7 @@ public class PastReservationController {
 				.groupBy(RESERVATIONS.RESOURCE_ID, RESERVATIONS.START, RESERVATIONS.END)
 				.fetch();
 
-		logger.info(fetch.toString());
+		logger.info("\n"+fetch.toString());
 		final List<Map> mapList = new ArrayList<>();
 
 		//|id|resource_id|user_id|name|address|nic_number|conact_number|email_address|start|end|created_at|updated_at|id|category_id|name|location|description|created_at|updated_at|
