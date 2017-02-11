@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" href="../../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}"
+          href="../../css/bootstrap-datepicker3.min.css"/>
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../../css/font-awesome.min.css"/>
 
 </head>
@@ -13,8 +14,7 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1>Passed Reservations Report</h1>
+    <div class="starter-template" style="margin-top: 25px;">
 
         <form action="#" th:action="@{/resourcesAvailabilityIn}" th:object="${searchData}" method="post"
               class="form-horizontal">
@@ -78,13 +78,13 @@
 
 <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
-    $(document).ready(function () {
+	$(document).ready(function () {
 
-	    $('#idx2').datepicker({
-		    format: 'dd-mm-yyyy'
-	    });
+		$('#idx2').datepicker({
+			format: 'dd-mm-yyyy'
+		});
 
-    });
+	});
     /*]]>*/
 </script>
 

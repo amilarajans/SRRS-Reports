@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" href="../../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}"
+          href="../../css/bootstrap-datepicker3.min.css"/>
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../../css/font-awesome.min.css"/>
 
 </head>
@@ -15,11 +16,12 @@
 
     <div class="starter-template" style="margin-top: 25px;">
 
-        <form action="#" th:action="@{/passedReservations}" th:object="${searchData}" method="post" class="form-horizontal">
+        <form action="#" th:action="@{/passedReservations}" th:object="${searchData}" method="post"
+              class="form-horizontal">
             <div class="form-group">
                 <label for="idx1" class="col-sm-3 control-label">Resource</label>
                 <div class="col-sm-4">
-                    <select id="idx1" class="form-control"  th:field="*{resource}">
+                    <select id="idx1" class="form-control" th:field="*{resource}">
                         <option th:each="type : ${allResource}" th:value="${type.key}" th:text="${type.value}"></option>
                     </select>
                 </div>
@@ -65,7 +67,8 @@
             <div th:if="${#lists.isEmpty(data)}">
                 <h3>No Data Found</h3>
             </div>
-            <div th:if="${not #lists.isEmpty(data)}" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div th:if="${not #lists.isEmpty(data)}" id="container"
+                 style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
 
         <div id="table">
@@ -103,64 +106,64 @@
 
 <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
-    Highcharts.chart('container', {
-        chart: {
-            type: 'area'
-        },
-        title: {
-            text: 'Past resource utilisation'
-        },
-        xAxis: {
-            categories: [[${days}]],
-            title: {
-                enabled: false
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Reservations'
-            }
-        },
-        tooltip: {
-            split: true
-        },
-        plotOptions: {
-            area: {
-                stacking: 'normal',
-                lineColor: '#666666',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#666666'
-                }
-            }
-        },
-        series: [[${data}]]
-    });
+	Highcharts.chart('container', {
+		chart: {
+			type: 'area'
+		},
+		title: {
+			text: 'Past resource utilisation'
+		},
+		xAxis: {
+			categories: [[${days}]],
+			title: {
+				enabled: false
+			}
+		},
+		yAxis: {
+			title: {
+				text: 'Reservations'
+			}
+		},
+		tooltip: {
+			split: true
+		},
+		plotOptions: {
+			area: {
+				stacking: 'normal',
+				lineColor: '#666666',
+				lineWidth: 1,
+				marker: {
+					lineWidth: 1,
+					lineColor: '#666666'
+				}
+			}
+		},
+		series: [[${data}]]
+	});
 
-    function onclickme(elm) {
-        var test = $(elm).val();
+	function onclickme(elm) {
+		var test = $(elm).val();
 
-        if (test == 'Chart') {
-            $("#table").hide();
-            $("#chart").show();
-        } else {
-            $("#table").show();
-            $("#chart").hide();
-        }
-    }
+		if (test == 'Chart') {
+			$("#table").hide();
+			$("#chart").show();
+		} else {
+			$("#table").show();
+			$("#chart").hide();
+		}
+	}
 
-    $(document).ready(function () {
-        $("#type1").trigger("click");
+	$(document).ready(function () {
+		$("#type1").trigger("click");
 
-        $('#idx4').datepicker({
-            format: 'dd-mm-yyyy'
-        });
+		$('#idx4').datepicker({
+			format: 'dd-mm-yyyy'
+		});
 
-        $('#idx5').datepicker({
-            format: 'dd-mm-yyyy'
-        });
-    });
+		$('#idx5').datepicker({
+			format: 'dd-mm-yyyy'
+		});
+	});
     /*]]>*/
 </script>
 
