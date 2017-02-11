@@ -24,55 +24,55 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class InitialConfiguration {
 
-    @Autowired
-    private DataSourceProperties dataSourceProperties;
+	@Autowired
+	private DataSourceProperties dataSourceProperties;
 
-    @Bean
-    @Primary
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource=new DriverManagerDataSource();
+	@Bean
+	@Primary
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        dataSource.setUrl(dataSourceProperties.getUrl());
-        dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
-        dataSource.setUsername(dataSourceProperties.getUsername());
-        dataSource.setPassword(dataSourceProperties.getPassword());
+		dataSource.setUrl(dataSourceProperties.getUrl());
+		dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+		dataSource.setUsername(dataSourceProperties.getUsername());
+		dataSource.setPassword(dataSourceProperties.getPassword());
 
-        return dataSource;
-    }
+		return dataSource;
+	}
 
-    @Bean
-    public TransactionAwareDataSourceProxy transactionAwareDataSource() {
-        return new TransactionAwareDataSourceProxy(dataSource());
-    }
+	@Bean
+	public TransactionAwareDataSourceProxy transactionAwareDataSource() {
+		return new TransactionAwareDataSourceProxy(dataSource());
+	}
 
-    @Bean
-    public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
-    }
+	@Bean
+	public DataSourceTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 
-    @Bean
-    public DataSourceConnectionProvider connectionProvider() {
-        return new DataSourceConnectionProvider(transactionAwareDataSource());
-    }
+	@Bean
+	public DataSourceConnectionProvider connectionProvider() {
+		return new DataSourceConnectionProvider(transactionAwareDataSource());
+	}
 
-    @Bean
-    public ExceptionTranslator exceptionTransformer() {
-        return new ExceptionTranslator();
-    }
+	@Bean
+	public ExceptionTranslator exceptionTransformer() {
+		return new ExceptionTranslator();
+	}
 
-    @Bean
-    public DefaultDSLContext dsl() {
-        return new DefaultDSLContext(configuration());
-    }
+	@Bean
+	public DefaultDSLContext dsl() {
+		return new DefaultDSLContext(configuration());
+	}
 
-    @Bean
-    public DefaultConfiguration configuration() {
-        DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
-        jooqConfiguration.set(connectionProvider());
-        jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));
+	@Bean
+	public DefaultConfiguration configuration() {
+		DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
+		jooqConfiguration.set(connectionProvider());
+		jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));
 
-        jooqConfiguration.set(SQLDialect.MYSQL);
+		jooqConfiguration.set(SQLDialect.MYSQL);
 
-        return jooqConfiguration;
-    }
+		return jooqConfiguration;
+	}
 }

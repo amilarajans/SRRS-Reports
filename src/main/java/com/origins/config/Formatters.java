@@ -12,18 +12,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Formatters {
 
-    @Bean
-    public DateFormatter dateFormatter() {
-        return new  DateFormatter();
-    }
+	@Bean
+	public DateFormatter dateFormatter() {
+		return new DateFormatter();
+	}
 
-    @Bean
-    public LocalDateFormatter localDateFormatter() {
-        return new  LocalDateFormatter();
-    }
+	@Bean
+	public LocalDateFormatter localDateFormatter() {
+		return new LocalDateFormatter();
+	}
 
-    @Bean
-    public LocalDateTimeFormatter localDateTimeFormatter() {
-        return new  LocalDateTimeFormatter();
-    }
+	@Bean
+	public LocalDateTimeFormatter localDateTimeFormatter() {
+		return new LocalDateTimeFormatter();
+	}
 }

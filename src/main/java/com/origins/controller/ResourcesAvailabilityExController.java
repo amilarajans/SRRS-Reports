@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ResourcesAvailabilityExController {
 
-    @RequestMapping("/resourcesAvailabilityEx")
-    @CrossOrigin(origins = "*")
-    public String welcome(final ModelMap model) {
-        model.addAttribute("searchData",null);
-        return "resourcesAvailabilityEx";
-    }
+	@RequestMapping("/resourcesAvailabilityEx")
+	@CrossOrigin(origins = "*")
+	public String welcome(final ModelMap model) {
+		model.addAttribute("searchData", null);
+		return "resourcesAvailabilityEx";
+	}
 
 }

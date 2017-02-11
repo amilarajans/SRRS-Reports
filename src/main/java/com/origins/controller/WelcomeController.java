@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WelcomeController {
 
-    @RequestMapping("/")
-    @CrossOrigin(origins = "*")
-    public String welcome(final ModelMap model) {
-        return "welcome";
-    }
+	@RequestMapping("/")
+	@CrossOrigin(origins = "*")
+	public String welcome(final ModelMap model) {
+		return "welcome";
+	}
 
 }
