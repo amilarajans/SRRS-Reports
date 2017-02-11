@@ -15,10 +15,12 @@ public class LocalDateFormatter implements Formatter<LocalDate> {
 		super();
 	}
 
+	@Override
 	public LocalDate parse(final String text, final Locale locale) throws ParseException {
 		return LocalDate.parse(text, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 	}
 
+	@Override
 	public String print(final LocalDate object, final Locale locale) {
 		return DateTimeFormatter.ofPattern("dd-MM-yyyy").format(object);
 	}

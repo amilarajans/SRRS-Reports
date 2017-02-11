@@ -50,14 +50,16 @@ public class PastReservationController {
 		return keyValues;
 	}
 
-//    @ModelAttribute("allUsers")
-//    public List<KeyValue<Integer>> allUsers() {
-//        List<KeyValue<Integer>> keyValues = new ArrayList<>();
-//        keyValues.add(new KeyValue(-1, "All"));
-//        dsl.selectFrom(Users.USERS).fetch()
-//                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
-//        return keyValues;
-//    }
+/*
+    @ModelAttribute("allUsers")
+    public List<KeyValue<Integer>> allUsers() {
+        List<KeyValue<Integer>> keyValues = new ArrayList<>();
+        keyValues.add(new KeyValue(-1, "All"));
+        dsl.selectFrom(Users.USERS).fetch()
+                .stream().forEach(r -> keyValues.add(new KeyValue(r.getId(), r.getName())));
+        return keyValues;
+    }
+*/
 
 	@RequestMapping("/passedReservations")
 	public String init(final ModelMap modelMap) {
