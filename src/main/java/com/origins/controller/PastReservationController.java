@@ -110,7 +110,7 @@ public class PastReservationController {
             LocalDateTime startDateTime = i.getValue(RESERVATIONS.START).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
             LocalDateTime endDateTime = i.get(RESERVATIONS.END).toLocalDateTime().toLocalDate().atTime(0, 0, 0, 0);
 
-            dataList.add(new GenericDAO(i.getValue(RESOURCES.NAME).toString(), i.getValue(RESOURCES.LOCATION).toLowerCase(), startDateTime, endDateTime, ((Integer) i.getValue(0))));
+            dataList.add(new GenericDAO(i.getValue(RESOURCES.NAME), i.getValue(RESOURCES.LOCATION), startDateTime, endDateTime, ((Integer) i.getValue(0))));
 
             daysList.stream().forEach(day -> {
                 LocalDateTime dateTime = day.toLocalDate().atTime(0, 0, 0, 0);

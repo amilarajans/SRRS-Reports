@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" href="../../css/bootstrap-datepicker3.min.css"/>
 
 </head>
 <body>
@@ -100,6 +101,8 @@
 <script th:src="@{/js/jquery.min.js}" src="../../js/jquery.min.js"></script>
 <script th:src="@{/js/bootstrap.min.js}" src="../../js/bootstrap.min.js"></script>
 <script th:src="@{/js/highcharts.js}" src="../../js/highcharts.js"></script>
+<script th:src="@{/js/moment-with-locales.min.js}" src="../../js/moment-with-locales.min.js"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}" src="../../js/bootstrap-datepicker.min.js"></script>
 
 <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
@@ -152,6 +155,14 @@
 
     $(document).ready(function () {
         $("#type1").trigger("click");
+
+        $('#idx4').datepicker({
+            format: 'dd-mm-yyyy'
+        });
+
+        $('#idx5').datepicker({
+            format: 'dd-mm-yyyy'
+        });
     });
     /*]]>*/
 </script>
