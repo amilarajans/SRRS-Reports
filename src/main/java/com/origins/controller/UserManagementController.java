@@ -25,6 +25,7 @@ public class UserManagementController {
 
 	private static final String USER = "users";
 	private static final String USER_ID = "userId";
+	private static final String RETURN_PAGE = "userManagement";
 	private Integer userId;
 
 	public UserManagementController(DSLContext dsl) {
@@ -38,7 +39,7 @@ public class UserManagementController {
 		this.userId = id;
 		model.addAttribute(USER_ID, userId);
 		model.addAttribute("searchData", new SearchData());
-		return "userManagement";
+		return RETURN_PAGE;
 	}
 
 	@RequestMapping(value = "/userManagement", params = {"search"})
@@ -46,18 +47,18 @@ public class UserManagementController {
 	public String searchUser(final ModelMap model, final SearchData searchData) {
 		model.addAttribute(USER, searchData(searchData));
 		model.addAttribute(USER_ID, userId);
-		return "userManagement";
+		return RETURN_PAGE;
 	}
 
-	@RequestMapping(value = "userManagement", params = {"delete"})
+	@RequestMapping(value = "/userManagement", params = {"delete"})
 	public String removeUser(final ModelMap model, final SearchData searchData, @RequestParam(value = "delete", required = false) String email) {
 		dsl.deleteFrom(USERS).where(USERS.EMAIL.equal(email)).execute();
 		model.addAttribute(USER, searchData(searchData));
 		model.addAttribute(USER_ID, userId);
-		return "userManagement";
+		return RETURN_PAGE;
 	}
 
-	@RequestMapping(value = "userManagement", params = {"update"})
+	@RequestMapping(value = "/userManagement", params = {"update"})
 	public String updateUser(final ModelMap model, @RequestParam(value = "name") String userName, @RequestParam(value = "email") String email, @RequestParam(value = "id") Integer id) {
 		if (userName != null && !userName.isEmpty()) {
 			dsl.update(USERS).set(USERS.NAME, userName).where(USERS.ID.equal(UInteger.valueOf(id))).execute();
@@ -67,7 +68,7 @@ public class UserManagementController {
 		}
 		model.addAttribute(USER, getUsers());
 		model.addAttribute(USER_ID, userId);
-		return "userManagement";
+		return RETURN_PAGE;
 	}
 
 	protected Result<UsersRecord> searchData(SearchData searchData) {
